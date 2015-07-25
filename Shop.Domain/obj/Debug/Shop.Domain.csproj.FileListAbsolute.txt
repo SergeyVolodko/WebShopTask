@@ -1,0 +1,13 @@
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\Shop.Domain.dll
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\Shop.Domain.pdb
+E:\Projects\WebShopTask\Shop.Domain\obj\Debug\Shop.Domain.dll
+E:\Projects\WebShopTask\Shop.Domain\obj\Debug\Shop.Domain.pdb
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\Shop.Domain.dll.config
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\Iesi.Collections.dll
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\NHibernate.dll
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\System.Data.SQLite.dll
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\Iesi.Collections.xml
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\NHibernate.xml
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\System.Data.SQLite.xml
+E:\Projects\WebShopTask\Shop.Domain\obj\Debug\Shop.Domain.csprojResolveAssemblyReference.cache
+E:\Projects\WebShopTask\Shop.Domain\bin\Debug\hibernate.cfg.xml
