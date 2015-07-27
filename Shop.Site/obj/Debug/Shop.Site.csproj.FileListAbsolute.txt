@@ -39,3 +39,8 @@ E:\Projects\WebShopTask\Shop.Site\bin\Iesi.Collections.dll
 E:\Projects\WebShopTask\Shop.Site\bin\NHibernate.xml
 E:\Projects\WebShopTask\Shop.Site\bin\Iesi.Collections.xml
 E:\Projects\WebShopTask\Shop.Site\bin\hibernate.cfg.xml
+E:\Projects\WebShopTask\Shop.Site\bin\Antlr3.Runtime.dll
+E:\Projects\WebShopTask\Shop.Site\bin\System.Web.Optimization.dll
+E:\Projects\WebShopTask\Shop.Site\bin\WebGrease.dll
+E:\Projects\WebShopTask\Shop.Site\bin\Antlr3.Runtime.pdb
+E:\Projects\WebShopTask\Shop.Site\bin\System.Web.Optimization.xml

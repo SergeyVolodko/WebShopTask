@@ -29,15 +29,6 @@ namespace Shop.Site.Controllers
                 HttpStatusCode.Conflict
                 : HttpStatusCode.Created;
         }
-
-        [HttpGet]
-        public string Get(string id)
-        {
-            
-            userService.RegisterUser(new UserModel() { Login = "test"});
-
-            return id;
-        }
     }
 
     public interface IUserController
