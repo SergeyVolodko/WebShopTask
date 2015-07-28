@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NinjectTests.cs" />
+    <Compile Include="ShopControllerAutoDataAttribute.cs" />
     <Compile Include="ShopAutoDataAttribute.cs" />
     <Compile Include="NewUserControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

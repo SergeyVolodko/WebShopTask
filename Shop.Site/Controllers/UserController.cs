@@ -9,14 +9,7 @@ namespace Shop.Site.Controllers
     public class UserController : ApiController
     {
         private readonly IUserService userService;
-
-        //public UserController()
-        //{
-        //    var path = HttpContext.Current.Server.MapPath("~/App_Data");
-        //    //var path1 = AppDomain.CurrentDomain.BaseDirectory + "\\App_Data";
-        //    userService = new UserService(new NHibUserRepository(path));
-        //}
-
+        
         public UserController(IUserService service)
         {
             userService = service;

@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using FluentAssertions;
 using NSubstitute;
+using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.Xunit;
 using Shop.Domain;
 using Shop.Site.Controllers;
@@ -11,28 +12,24 @@ namespace Shop.Tests
     public class NewUserControllerTests
     {
         [Theory]
-        [ShopAutoDataAttribute]
+        [ShopControllerAutoData]
         public void register_user_should_return_http_status_created(
-           [Frozen] IUserService service,
-           // IUserController sut,
+            [Frozen] IUserService service,
+            UserController sut,
             UserModel newUser)
         {
-            var sut = new UserController(service);
-
             ((HttpStatusCode)sut.Post(newUser))
                 .Should()
                 .Be(HttpStatusCode.Created);
         }
         
         [Theory]
-        [ShopAutoDataAttribute]
+        [ShopControllerAutoData]
         public void register_existing_user_should_return_http_status_conflict(
             [Frozen] IUserService service,
-            //IUserController sut,
+            UserController sut,
             UserModel newUser)
         {
-            var sut = new UserController(service);
-
             service.RegisterUser(newUser)
                 .Returns(ServiceStatus.Conflict);
 
@@ -42,20 +39,16 @@ namespace Shop.Tests
         }
 
         [Theory]
-        [ShopAutoDataAttribute]
+        [ShopControllerAutoData]
         public void register_user_should_invoke_service_new_user(
             [Frozen] IUserService service,
-            //UserController sut,
+            UserController sut,
             UserModel newUser)
         {
-
-            var sut = new UserController(service);
-            
             sut.Post(newUser);
             service.Received()
                 .RegisterUser(newUser);
         }
     }
-
-
+    
 }

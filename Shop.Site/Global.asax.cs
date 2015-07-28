@@ -29,13 +29,10 @@ namespace Shop.Site
             return kernel;
         }
 
-        /// <summary>
-        /// Load your modules or register your services here!
-        /// </summary>
-        /// <param name="kernel">The kernel.</param>
         private void RegisterServices(IKernel kernel)
         {
             var path = "dsfds"; //HttpContext.Current.Server.MapPath("~/App_Data");
+            //var path1 = AppDomain.CurrentDomain.BaseDirectory + "\\App_Data";
 
             kernel.Bind<IUserRepository>().To<NHibUserRepository>().WithConstructorArgument("dbFolderPath", path);
             kernel.Bind<IUserService>().To<UserService>();
@@ -63,14 +60,5 @@ namespace Shop.Site
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-    }
-
-
-
-
-
-
-
-
-        
+    } 
 }
