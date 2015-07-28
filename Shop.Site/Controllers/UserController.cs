@@ -6,16 +6,16 @@ using Shop.Domain;
 
 namespace Shop.Site.Controllers
 {
-    public class UserController : ApiController, IUserController
+    public class UserController : ApiController
     {
         private readonly IUserService userService;
 
-        public UserController()
-        {
-            var path = HttpContext.Current.Server.MapPath("~/App_Data");
-            //var path1 = AppDomain.CurrentDomain.BaseDirectory + "\\App_Data";
-            userService = new UserService(new NHibUserRepository(path));
-        }
+        //public UserController()
+        //{
+        //    var path = HttpContext.Current.Server.MapPath("~/App_Data");
+        //    //var path1 = AppDomain.CurrentDomain.BaseDirectory + "\\App_Data";
+        //    userService = new UserService(new NHibUserRepository(path));
+        //}
 
         public UserController(IUserService service)
         {
@@ -29,10 +29,11 @@ namespace Shop.Site.Controllers
                 HttpStatusCode.Conflict
                 : HttpStatusCode.Created;
         }
-    }
 
-    public interface IUserController
-    {
-        object Post(UserModel newUser);
+        [HttpGet]
+        public string Get(string id)
+        {
+            return id;
+        }
     }
 }

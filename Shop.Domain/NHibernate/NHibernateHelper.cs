@@ -67,7 +67,7 @@ namespace Shop.Domain.NHibernate
             
             var connectionString = String.Format("Data Source={0}\\test.db;Version=3;New=True", dbPath);
 
-            configuration.Configure()
+            configuration.Configure(@"E:\Projects\WebShopTask\Shop.Domain\hibernate.cfg.xml")
                 .AddProperties(new Dictionary<string, string>()
                 {
                     {Environment.ConnectionString, connectionString}

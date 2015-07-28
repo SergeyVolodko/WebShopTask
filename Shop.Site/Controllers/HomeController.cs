@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Shop.Domain;
 
 namespace Shop.Site.Controllers
 {
