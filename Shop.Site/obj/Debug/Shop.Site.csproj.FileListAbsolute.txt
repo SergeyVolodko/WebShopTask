@@ -36,7 +36,6 @@ E:\Projects\WebShopTask\Shop.Site\bin\NHibernate.dll
 E:\Projects\WebShopTask\Shop.Site\bin\Iesi.Collections.dll
 E:\Projects\WebShopTask\Shop.Site\bin\NHibernate.xml
 E:\Projects\WebShopTask\Shop.Site\bin\Iesi.Collections.xml
-E:\Projects\WebShopTask\Shop.Site\bin\hibernate.cfg.xml
 E:\Projects\WebShopTask\Shop.Site\bin\Antlr3.Runtime.dll
 E:\Projects\WebShopTask\Shop.Site\bin\System.Web.Optimization.dll
 E:\Projects\WebShopTask\Shop.Site\bin\WebGrease.dll
@@ -47,3 +46,6 @@ E:\Projects\WebShopTask\Shop.Site\bin\WebActivatorEx.dll
 E:\Projects\WebShopTask\Shop.Site\bin\Ninject.Web.Mvc.xml
 E:\Projects\WebShopTask\Shop.Site\bin\Ninject.Web.WebApi.dll
 E:\Projects\WebShopTask\Shop.Site\bin\Ninject.Web.WebApi.xml
+E:\Projects\WebShopTask\Shop.Site\bin\FluentNHibernate.dll
+E:\Projects\WebShopTask\Shop.Site\bin\FluentNHibernate.pdb
+E:\Projects\WebShopTask\Shop.Site\bin\FluentNHibernate.xml

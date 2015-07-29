@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Http;
 using Shop.Domain;
 

@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
+using NHibernate;
 using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Web.Common;
@@ -31,17 +32,10 @@ namespace Shop.Site
 
         private void RegisterServices(IKernel kernel)
         {
-            var path = "dsfds"; //HttpContext.Current.Server.MapPath("~/App_Data");
-            //var path1 = AppDomain.CurrentDomain.BaseDirectory + "\\App_Data";
+            BindNhibernateModules(kernel);
 
-            kernel.Bind<IUserRepository>().To<NHibUserRepository>().WithConstructorArgument("dbFolderPath", path);
+            kernel.Bind<IUserRepository>().To<NHibUserRepository>();
             kernel.Bind<IUserService>().To<UserService>();
-
-            //kernel.Bind(
-            //    x => x.FromAssembliesMatching("Shop.Domain")
-            //        .SelectAllClasses()
-            //        .BindAllInterfaces()
-            //);
 
             kernel.Bind(
                x => x.FromThisAssembly()
@@ -49,6 +43,24 @@ namespace Shop.Site
                    .Where(c => c.Name.EndsWith("Controller"))
                    .BindToSelf()
            );
+        }
+
+        private static void BindNhibernateModules(IKernel kernel)
+        {
+            var appDataFolder = HttpContext.Current.Server.MapPath("~/App_Data");
+            //var path1 = AppDomain.CurrentDomain.BaseDirectory + "\\App_Data";
+
+            kernel.Bind<NhibernateSessionFactoryProvider>()
+                .ToSelf()
+                .WithConstructorArgument("dbFolder", appDataFolder);
+
+            kernel.Bind<ISessionFactory>()
+                .ToProvider<NhibernateSessionFactoryProvider>()
+                .InSingletonScope();
+
+            kernel.Bind<ISession>()
+                .ToMethod(context => context.Kernel.Get<ISessionFactory>().OpenSession())
+                .InRequestScope();
         }
 
         protected override void OnApplicationStarted()

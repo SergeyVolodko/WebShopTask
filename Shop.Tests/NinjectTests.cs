@@ -20,6 +20,18 @@ namespace Shop.Tests
             repo.Should().NotBeNull();
         }
 
+        [Theory]
+        [PropertyData("RepositoryTypes")]
+        [PropertyData("ServiceTypes")]
+        [PropertyData("ControllerTypes")]
+        public void should_return_all_repositories_services_and_controllers(Type controllerType)
+        {
+            var kernel = new Global().GetKernel();
+
+            kernel.Get(controllerType)
+                .Should().NotBeNull();
+        }
+
         public static IEnumerable<object[]> ControllerTypes {
             get
             {
@@ -51,18 +63,5 @@ namespace Shop.Tests
                     .Select(t => new object[] {t});
             }
         }
-
-        [Theory]
-        [PropertyData("RepositoryTypes")]
-        [PropertyData("ServiceTypes")]
-        [PropertyData("ControllerTypes")]
-        public void should_return_all_repositories_services_and_controllers(Type controllerType)
-        {
-            var kernel = new Global().GetKernel();
-
-            kernel.Get(controllerType)
-                .Should().NotBeNull();
-        }
-
     }
 }

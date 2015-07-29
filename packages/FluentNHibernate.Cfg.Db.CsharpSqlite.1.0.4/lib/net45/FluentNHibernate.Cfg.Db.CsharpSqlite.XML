@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FluentNHibernate.Cfg.Db.CsharpSqlite</name>
+    </assembly>
+    <members>
+        <member name="T:FluentNHibernate.Cfg.Db.CsharpSqlite.CsharpSqliteConfiguration">
+            <summary>
+            Fluent configuration for the C#-SQLite driver.
+            </summary>
+        </member>
+        <member name="M:FluentNHibernate.Cfg.Db.CsharpSqlite.CsharpSqliteConfiguration.#ctor">
+            <summary>
+            Instantiates a new configuration object.
+            </summary>
+        </member>
+        <member name="P:FluentNHibernate.Cfg.Db.CsharpSqlite.CsharpSqliteConfiguration.Standard">
+            <summary>
+            Gets a default instantiation of the class.
+            </summary>
+        </member>
+        <member name="T:FluentNHibernate.Cfg.Db.CsharpSqlite.CsharpSqliteDriver">
+            <summary>
+            C#-SQLite driver for Fluent NHibernate.
+            </summary>
+        </member>
+        <member name="M:FluentNHibernate.Cfg.Db.CsharpSqlite.CsharpSqliteDriver.#ctor">
+            <summary>
+            Instantiates a new C#-SQLite driver class.
+            </summary>
+        </member>
+        <member name="P:FluentNHibernate.Cfg.Db.CsharpSqlite.CsharpSqliteDriver.UseNamedPrefixInParameter">
+            <summary>
+            Gets whether this driver requires the use of the Named Prefix when trying to reference the Parameter in the Command's Parameter collection.
+            </summary>
+        </member>
+        <member name="P:FluentNHibernate.Cfg.Db.CsharpSqlite.CsharpSqliteDriver.UseNamedPrefixInSql">
+            <summary>
+            Gets whether this driver requires the use of a Named Prefix in the SQL statement.
+            </summary>
+        </member>
+        <member name="P:FluentNHibernate.Cfg.Db.CsharpSqlite.CsharpSqliteDriver.NamedPrefix">
+            <summary>
+            Gets the Named Prefix for parameters.
+            </summary>
+        </member>
+        <member name="P:FluentNHibernate.Cfg.Db.CsharpSqlite.CsharpSqliteDriver.SupportsMultipleOpenReaders">
+            <summary>
+            Gets whether the driver supports more than one open IDataReader and only one IDbConnection.
+            </summary>
+        </member>
+    </members>
+</doc>

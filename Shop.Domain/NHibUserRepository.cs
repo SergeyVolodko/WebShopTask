@@ -1,22 +1,18 @@
-﻿using System;
-using NHibernate;
-using NHibernate.Tool.hbm2ddl;
-using Shop.Domain.NHibernate;
+﻿using NHibernate;
 
 namespace Shop.Domain
 {
     public class NHibUserRepository: IUserRepository
     {
-        public NHibUserRepository(string dbFolderPath)
+        private readonly ISession session;
+        
+        public NHibUserRepository(ISession session)
         {
-            NHibernateHelper.dbPath = dbFolderPath;
-            var schemaUpdate = new SchemaUpdate(NHibernateHelper.Configuration);
-            schemaUpdate.Execute(Console.WriteLine, true);
+            this.session = session;
         }
 
         public void CreateUser(UserModel newUser)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Save(newUser);
@@ -26,13 +22,10 @@ namespace Shop.Domain
 
         public bool UserExists(string login)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                var existingUsers = session.QueryOver<UserModel>()
-                                    .Where(p => p.Login == login);
+            var existingUsers = session.QueryOver<UserModel>()
+                                .Where(u => u.Login == login);
 
-                return existingUsers.RowCount() > 0;
-            }
+            return existingUsers.RowCount() > 0;
         }
     }
 }
