@@ -16,6 +16,17 @@ namespace Shop.Site
 {
     public class Global : NinjectHttpApplication
     {
+        private string appDataFolderPath;
+
+        public Global()
+        {   
+        }
+
+        public Global(string appDataFolderPath)
+        {
+            this.appDataFolderPath = appDataFolderPath;
+        }
+
         protected override IKernel CreateKernel()
         {
             var kernel = GetKernel();
@@ -45,14 +56,15 @@ namespace Shop.Site
            );
         }
 
-        private static void BindNhibernateModules(IKernel kernel)
+        private void BindNhibernateModules(IKernel kernel)
         {
-            var appDataFolder = HttpContext.Current.Server.MapPath("~/App_Data");
             //var path1 = AppDomain.CurrentDomain.BaseDirectory + "\\App_Data";
+
+            appDataFolderPath = appDataFolderPath ?? HttpContext.Current.Server.MapPath("~/App_Data");
 
             kernel.Bind<NhibernateSessionFactoryProvider>()
                 .ToSelf()
-                .WithConstructorArgument("dbFolder", appDataFolder);
+                .WithConstructorArgument("dbFolder", appDataFolderPath);
 
             kernel.Bind<ISessionFactory>()
                 .ToProvider<NhibernateSessionFactoryProvider>()

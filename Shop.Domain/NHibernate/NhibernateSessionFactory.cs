@@ -23,7 +23,7 @@ namespace Shop.Domain.NHibernate
             ISessionFactory fluentConfiguration = Fluently.Configure()
                                                     .Database(SQLiteConfiguration.Standard.ConnectionString(connectionString))
                                                     .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserModel>())
-                                                    .ExposeConfiguration(BuidSchema)
+                                                    //.ExposeConfiguration(BuidSchema)
                                                     .BuildSessionFactory();
  
             return fluentConfiguration;

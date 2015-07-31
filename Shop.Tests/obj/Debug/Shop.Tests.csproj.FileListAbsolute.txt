@@ -45,12 +45,9 @@ E:\Projects\WebShopTask\Shop.Tests\bin\Debug\System.Web.WebPages.xml
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Ninject.dll
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Ninject.xml
-E:\Projects\WebShopTask\Shop.Tests\bin\Debug\hibernate.cfg.xml
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Shop.Tests.dll.config
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\NHibernate.dll
-E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Iesi.Collections.dll
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\NHibernate.xml
-E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Iesi.Collections.xml
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Ninject.Web.Common.dll
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\System.Web.Optimization.dll
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Ninject.Web.Common.xml
@@ -60,3 +57,10 @@ E:\Projects\WebShopTask\Shop.Tests\bin\Debug\System.Web.Helpers.dll
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\System.Web.Helpers.xml
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Ninject.Extensions.Conventions.dll
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Ninject.Extensions.Conventions.xml
+E:\Projects\WebShopTask\Shop.Tests\bin\Debug\FluentNHibernate.dll
+E:\Projects\WebShopTask\Shop.Tests\bin\Debug\FluentNHibernate.pdb
+E:\Projects\WebShopTask\Shop.Tests\bin\Debug\FluentNHibernate.xml
+E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Community.CsharpSqlite.dll
+E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Community.CsharpSqlite.SQLiteClient.dll
+E:\Projects\WebShopTask\Shop.Tests\bin\Debug\System.Data.SQLite.dll
+E:\Projects\WebShopTask\Shop.Tests\bin\Debug\System.Data.SQLite.xml

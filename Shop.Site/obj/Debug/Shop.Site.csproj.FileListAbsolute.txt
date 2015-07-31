@@ -49,3 +49,5 @@ E:\Projects\WebShopTask\Shop.Site\bin\Ninject.Web.WebApi.xml
 E:\Projects\WebShopTask\Shop.Site\bin\FluentNHibernate.dll
 E:\Projects\WebShopTask\Shop.Site\bin\FluentNHibernate.pdb
 E:\Projects\WebShopTask\Shop.Site\bin\FluentNHibernate.xml
+E:\Projects\WebShopTask\Shop.Site\bin\FluentNHibernate.Cfg.Db.CsharpSqlite.dll
+E:\Projects\WebShopTask\Shop.Site\bin\FluentNHibernate.Cfg.Db.CsharpSqlite.xml

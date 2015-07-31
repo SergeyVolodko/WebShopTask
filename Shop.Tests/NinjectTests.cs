@@ -10,13 +10,15 @@ using Xunit.Extensions;
 
 namespace Shop.Tests
 {
-    
     public class NinjectTests
     {
+        const string appDataFolderPath = @"E:\Projects\WebShopTask\Shop.Site\App_Data";
+
         [Fact]
         public void test_ninject()
         {
-            var repo = new Global().GetKernel().Get<IUserRepository>();
+            var repo = new Global(appDataFolderPath)
+                .GetKernel().Get<IUserRepository>();
             repo.Should().NotBeNull();
         }
 
@@ -24,11 +26,11 @@ namespace Shop.Tests
         [PropertyData("RepositoryTypes")]
         [PropertyData("ServiceTypes")]
         [PropertyData("ControllerTypes")]
-        public void should_return_all_repositories_services_and_controllers(Type controllerType)
+        public void should_return_all_repositories_services_and_controllers(Type type)
         {
-            var kernel = new Global().GetKernel();
+            var kernel = new Global(appDataFolderPath).GetKernel();
 
-            kernel.Get(controllerType)
+            kernel.Get(type)
                 .Should().NotBeNull();
         }
 
