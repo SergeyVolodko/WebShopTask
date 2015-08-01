@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shop.Domain
+namespace Shop.Domain.Entities
 {
     public class UserModel
     {

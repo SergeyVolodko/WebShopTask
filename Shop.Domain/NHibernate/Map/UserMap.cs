@@ -1,4 +1,5 @@
 using FluentNHibernate.Mapping;
+using Shop.Domain.Entities;
 
 namespace Shop.Domain.NHibernate.Map
 {

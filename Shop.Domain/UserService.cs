@@ -1,4 +1,6 @@
 ﻿
+using Shop.Domain.Entities;
+
 namespace Shop.Domain
 {
     public enum ServiceStatus
@@ -25,6 +27,19 @@ namespace Shop.Domain
                 return ServiceStatus.Ok;
             }
             return ServiceStatus.Conflict;
+        }
+
+        public UserModel LoginUser(string login, string password)
+        {
+            if (repository.UserExists(login))
+            {
+                var loggedUser = repository.GetUserByLoginAndPassword(login, password);
+                
+                return loggedUser
+                       ?? new NotAuthorizedUser();
+            }
+            
+            return new NotAuthorizedUser();
         }
     }
 }

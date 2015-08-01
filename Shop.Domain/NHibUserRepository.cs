@@ -1,4 +1,5 @@
 ﻿using NHibernate;
+using Shop.Domain.Entities;
 
 namespace Shop.Domain
 {
@@ -26,6 +27,14 @@ namespace Shop.Domain
                                 .Where(u => u.Login == login);
 
             return existingUsers.RowCount() > 0;
+        }
+
+        public UserModel GetUserByLoginAndPassword(string login, string password)
+        {
+            return session.QueryOver<UserModel>()
+                    .Where(u => u.Login == login
+                                && u.Password == password)
+                    .SingleOrDefault();
         }
     }
 }

@@ -4,12 +4,13 @@ using NSubstitute;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.Xunit;
 using Shop.Domain;
+using Shop.Domain.Entities;
 using Shop.Site.Controllers;
 using Xunit.Extensions;
 
 namespace Shop.Tests
 {
-    public class NewUserControllerTests
+    public class UserControllerTests
     {
         [Theory]
         [ShopControllerAutoData]

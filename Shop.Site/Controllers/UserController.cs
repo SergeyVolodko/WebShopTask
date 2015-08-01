@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Web.Http;
 using Shop.Domain;
+using Shop.Domain.Entities;
 
 namespace Shop.Site.Controllers
 {

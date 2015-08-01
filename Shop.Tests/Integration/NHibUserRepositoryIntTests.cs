@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Ninject;
 using Shop.Domain;
+using Shop.Domain.Entities;
 using Shop.Site;
 using Xunit.Extensions;
 
@@ -9,7 +10,7 @@ namespace Shop.Tests.Integration
     public class NHibUserRepositoryIntTests
     {
         private readonly IUserRepository repository;
-
+        
         public NHibUserRepositoryIntTests()
         {
             repository = new Global(Consts.TEST_DB_PATH)
@@ -34,6 +35,44 @@ namespace Shop.Tests.Integration
 
             repository.UserExists(newUser.Login)
                 .Should().Be(true);
+        }
+
+        [Theory]
+        [ShopAutoData]
+        public void get_existing_user_by_login_and_pass_returns_that_user(
+            UserModel existingUser)
+        {
+            repository.CreateUser(existingUser);
+
+            repository.GetUserByLoginAndPassword(existingUser.Login, existingUser.Password)
+                .Should()
+                .Be(existingUser);
+        }
+        
+        [Theory]
+        [ShopAutoData]
+        public void get_user_by_login_and_wrong_pass_returns_null(
+            UserModel existingUser,
+            string wrongPassword)
+        {
+            repository.CreateUser(existingUser);
+
+            repository.GetUserByLoginAndPassword(existingUser.Login, wrongPassword)
+                .Should()
+                .BeNull();
+        }
+
+        [Theory]
+        [ShopAutoData]
+        public void get_user_by_wrong_login_and_pass_returns_null(
+            UserModel existingUser,
+            string wrongLogin)
+        {
+            repository.CreateUser(existingUser);
+
+            repository.GetUserByLoginAndPassword(wrongLogin, existingUser.Password)
+                .Should()
+                .BeNull();
         }
     }
 }

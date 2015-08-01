@@ -126,11 +126,12 @@
   <ItemGroup>
     <Compile Include="Consts.cs" />
     <Compile Include="Integration\NHibUserRepositoryIntTests.cs" />
+    <Compile Include="Controllers\LoginUserControllerTests.cs" />
     <Compile Include="NhibUserRepositoryTests.cs" />
     <Compile Include="Integration\NinjectIntTests.cs" />
     <Compile Include="Attributes\ShopControllerAutoDataAttribute.cs" />
     <Compile Include="Attributes\ShopAutoDataAttribute.cs" />
-    <Compile Include="NewUserControllerTests.cs" />
+    <Compile Include="Controllers\UserControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserServiceTests.cs" />
   </ItemGroup>
