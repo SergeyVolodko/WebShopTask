@@ -124,8 +124,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consts.cs" />
+    <Compile Include="Integration\NHibUserRepositoryIntTests.cs" />
     <Compile Include="NhibUserRepositoryTests.cs" />
-    <Compile Include="NinjectTests.cs" />
+    <Compile Include="Integration\NinjectIntTests.cs" />
     <Compile Include="Attributes\ShopControllerAutoDataAttribute.cs" />
     <Compile Include="Attributes\ShopAutoDataAttribute.cs" />
     <Compile Include="NewUserControllerTests.cs" />
@@ -146,9 +148,7 @@
       <Name>Shop.Site</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Integration\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

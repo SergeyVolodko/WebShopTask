@@ -5,30 +5,19 @@ using FluentAssertions;
 using Ninject;
 using Shop.Domain;
 using Shop.Site;
-using Xunit;
 using Xunit.Extensions;
 
-namespace Shop.Tests
+namespace Shop.Tests.Integration
 {
-    public class NinjectTests
+    public class NinjectIntTests
     {
-        const string appDataFolderPath = @"E:\Projects\WebShopTask\Shop.Site\App_Data";
-
-        [Fact]
-        public void test_ninject()
-        {
-            var repo = new Global(appDataFolderPath)
-                .GetKernel().Get<IUserRepository>();
-            repo.Should().NotBeNull();
-        }
-
         [Theory]
         [PropertyData("RepositoryTypes")]
         [PropertyData("ServiceTypes")]
         [PropertyData("ControllerTypes")]
         public void should_return_all_repositories_services_and_controllers(Type type)
         {
-            var kernel = new Global(appDataFolderPath).GetKernel();
+            var kernel = new Global(Consts.TEST_DB_PATH).GetKernel();
 
             kernel.Get(type)
                 .Should().NotBeNull();

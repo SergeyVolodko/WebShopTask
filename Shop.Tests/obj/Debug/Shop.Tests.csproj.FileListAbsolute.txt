@@ -60,7 +60,5 @@ E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Ninject.Extensions.Conventions.xml
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\FluentNHibernate.dll
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\FluentNHibernate.pdb
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\FluentNHibernate.xml
-E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Community.CsharpSqlite.dll
-E:\Projects\WebShopTask\Shop.Tests\bin\Debug\Community.CsharpSqlite.SQLiteClient.dll
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\System.Data.SQLite.dll
 E:\Projects\WebShopTask\Shop.Tests\bin\Debug\System.Data.SQLite.xml

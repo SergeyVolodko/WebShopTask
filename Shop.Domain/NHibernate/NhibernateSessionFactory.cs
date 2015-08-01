@@ -18,15 +18,15 @@ namespace Shop.Domain.NHibernate
 
         public ISessionFactory GetSessionFactory()
         {
-            var connectionString = String.Format("Data Source={0}\\test.db;Version=3;New=True", dataBasePath);
-            
-            ISessionFactory fluentConfiguration = Fluently.Configure()
-                                                    .Database(SQLiteConfiguration.Standard.ConnectionString(connectionString))
-                                                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserModel>())
-                                                    //.ExposeConfiguration(BuidSchema)
-                                                    .BuildSessionFactory();
+            var connectionString = String.Format("Data Source={0};Version=3;New=True", dataBasePath);
+
+            var fluentConfiguration = Fluently.Configure()
+                                               .Database(SQLiteConfiguration.Standard.ConnectionString(connectionString))
+                                               .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserModel>())
+                                               //.ExposeConfiguration(BuidSchema)
+                                               .BuildConfiguration();
  
-            return fluentConfiguration;
+            return fluentConfiguration.BuildSessionFactory();
         }
 
         //WARNING THIS WILL TRY TO DROP ALL YOUR TABLES EVERYTIME YOU LAUNCH YOUR SITE. DISABLE AFTER CREATING DATABASE.
