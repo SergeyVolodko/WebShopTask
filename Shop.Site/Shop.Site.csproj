@@ -146,6 +146,7 @@
     <Content Include="Scripts\init.js" />
     <Content Include="Scripts\lib\jquery-1.10.2.js" />
     <Content Include="Scripts\lib\modernizr-2.6.2.js" />
+    <Content Include="Scripts\loginUserController.js" />
     <Content Include="Scripts\registerUserController.js" />
     <Content Include="Web.config" />
   </ItemGroup>

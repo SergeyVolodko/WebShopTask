@@ -14,3 +14,24 @@
     </div>
     <input type="button" value="Register" ng-click="register()">
 </div>
+<br/>
+
+<div ng-controller="loginUserController">
+    <div ng-show="!loggedUser">
+        <div>
+            Login: <input type="text" ng-model="login" />
+        </div>
+        <div>
+            Password: <input type="password" ng-model="password" />
+        </div>
+        <input type="button" value="Login" ng-click="authenticate()">
+    </div>
+    
+    <div>
+        <h2 ng-bind="loggedUser"></h2>
+
+        <span ng-bind="firstName"> </span>
+        <span ng-bind="lastName"></span>
+    </div>
+    
+</div>
