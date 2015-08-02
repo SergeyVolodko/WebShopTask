@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ArrayOfArticle xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Article Name="Namef7c78c6e-9f83-4624-a0e9-da84f5994bcd">
+    <Description>Descriptiona27659ec-9992-4a95-84b6-b259675f0845</Description>
+    <Price>158</Price>
+  </Article>
+  <Article Name="Namea480734d-342e-4833-ba0f-9e1f6620e230">
+    <Description>Descriptioncc7472a3-fe5d-4cd8-a00a-534b4315b577</Description>
+    <Price>208</Price>
+  </Article>
+  <Article Name="Namee9553b29-3fbe-4f70-bbde-d078751f5938">
+    <Description>Description795b43b5-e1e9-4978-a358-90a219ba9238</Description>
+    <Price>1</Price>
+  </Article>
+</ArrayOfArticle>

@@ -63,15 +63,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Article.cs" />
     <Compile Include="Entities\NotAuthorizedUser.cs" />
-    <Compile Include="IUserRepository.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="Repositories\ArticleXMLRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\IArticleRepository.cs" />
+    <Compile Include="Services\ArticleService.cs" />
+    <Compile Include="Services\IArticleService.cs" />
+    <Compile Include="Services\IUserService.cs" />
     <Compile Include="NHibernate\NhibernateSessionFactory.cs" />
     <Compile Include="NHibernate\Map\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\UserModel.cs" />
-    <Compile Include="NHibUserRepository.cs" />
-    <Compile Include="UserService.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Repositories\UserNHibRepository.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

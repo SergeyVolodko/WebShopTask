@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NSubstitute;
 using Ploeh.AutoFixture.Xunit;
-using Shop.Domain;
 using Shop.Domain.Entities;
+using Shop.Domain.Services;
 using Shop.Site.Controllers;
 using Shop.Site.Models;
 using Xunit.Extensions;
 
-namespace Shop.Tests
+namespace Shop.Tests.Controllers
 {
     public class LoginUserControllerTests
     {
@@ -35,7 +29,7 @@ namespace Shop.Tests
         public void happy_run(
             [Frozen] IUserService service,
             LoginUserController sut,
-            UserModel existingUser)
+            User existingUser)
         {
             service.LoginUser(existingUser.Login, existingUser.Password)
                 .Returns(existingUser);

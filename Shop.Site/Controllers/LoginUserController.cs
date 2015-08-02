@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using Shop.Domain;
 using Shop.Domain.Entities;
+using Shop.Domain.Services;
 using Shop.Site.Models;
 
 namespace Shop.Site.Controllers
@@ -13,7 +14,8 @@ namespace Shop.Site.Controllers
         {
             userService = service;
         }
-        public UserModel Post(LoginData loginData)
+
+        public User Post(LoginData loginData)
         {
             return userService.LoginUser(loginData.Login, loginData.Password);
         }

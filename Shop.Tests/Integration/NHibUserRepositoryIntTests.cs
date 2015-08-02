@@ -2,6 +2,7 @@
 using Ninject;
 using Shop.Domain;
 using Shop.Domain.Entities;
+using Shop.Domain.Repositories;
 using Shop.Site;
 using Xunit.Extensions;
 
@@ -13,7 +14,7 @@ namespace Shop.Tests.Integration
         
         public NHibUserRepositoryIntTests()
         {
-            repository = new Global(Consts.TEST_DB_PATH)
+            repository = new Global(Consts.TEST_APP_DATA)
                 .GetKernel().Get<IUserRepository>();
         }
 
@@ -29,7 +30,7 @@ namespace Shop.Tests.Integration
         [Theory]
         [ShopAutoData]
         public void after_user_is_added_user_exists_check_returns_true(
-            UserModel newUser)
+            User newUser)
         {
             repository.CreateUser(newUser);
 
@@ -40,7 +41,7 @@ namespace Shop.Tests.Integration
         [Theory]
         [ShopAutoData]
         public void get_existing_user_by_login_and_pass_returns_that_user(
-            UserModel existingUser)
+            User existingUser)
         {
             repository.CreateUser(existingUser);
 
@@ -52,7 +53,7 @@ namespace Shop.Tests.Integration
         [Theory]
         [ShopAutoData]
         public void get_user_by_login_and_wrong_pass_returns_null(
-            UserModel existingUser,
+            User existingUser,
             string wrongPassword)
         {
             repository.CreateUser(existingUser);
@@ -65,7 +66,7 @@ namespace Shop.Tests.Integration
         [Theory]
         [ShopAutoData]
         public void get_user_by_wrong_login_and_pass_returns_null(
-            UserModel existingUser,
+            User existingUser,
             string wrongLogin)
         {
             repository.CreateUser(existingUser);

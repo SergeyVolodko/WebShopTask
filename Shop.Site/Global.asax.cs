@@ -8,23 +8,30 @@ using NHibernate;
 using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Web.Common;
-using Shop.Domain;
+using Shop.Domain.Repositories;
+using Shop.Domain.Services;
 using Shop.Site.App_Start;
 using Shop.Site.Controllers;
 
 namespace Shop.Site
 {
+    public class AppTestingData
+    {
+        public string DataBasePath;
+        public string ArticlesXmlPath;
+    }
+
     public class Global : NinjectHttpApplication
     {
-        private string dataBasePath;
+        private AppTestingData testingData;
 
         public Global()
         {   
         }
 
-        public Global(string dataBasePath)
+        public Global(AppTestingData testingData)
         {
-            this.dataBasePath = dataBasePath;
+            this.testingData = testingData;
         }
 
         protected override IKernel CreateKernel()
@@ -45,21 +52,45 @@ namespace Shop.Site
         {
             BindNhibernateModules(kernel);
 
-            kernel.Bind<IUserRepository>().To<NHibUserRepository>();
-            kernel.Bind<IUserService>().To<UserService>();
+            BindRepositories(kernel);
 
+            BindAllServices(kernel);
+
+            BindAllControllers(kernel);
+        }
+
+        private void BindRepositories(IKernel kernel)
+        {
+            var articlesXmlPath = testingData != null ? testingData.ArticlesXmlPath
+                                  : HttpContext.Current.Server.MapPath("~/App_Data") + "\\articles.xml";
+
+            kernel.Bind<IUserRepository>().To<UserNHibRepository>();
+            kernel.Bind<IArticleRepository>().To<ArticleXMLRepository>()
+                .WithConstructorArgument("xmlFile", articlesXmlPath);
+        }
+
+        private void BindAllControllers(IKernel kernel)
+        {
             kernel.Bind(
-               x => x.FromThisAssembly()
-                   .SelectAllClasses()
-                   .Where(c => c.Name.EndsWith("Controller"))
-                   .BindToSelf()
-           );
+                x => x.FromThisAssembly()
+                    .SelectAllClasses()
+                    .Where(c => c.Name.EndsWith("Controller"))
+                    .BindToSelf());
+        }
+
+        private void BindAllServices(IKernel kernel)
+        {
+            kernel.Bind(
+                x => x.FromAssemblyContaining<IUserService>()
+                    .SelectAllClasses()
+                    .Where(c => c.Name.EndsWith("Service"))
+                    .BindAllInterfaces());
         }
 
         private void BindNhibernateModules(IKernel kernel)
         {
-            dataBasePath = dataBasePath 
-                ?? HttpContext.Current.Server.MapPath("~/App_Data") + "//WebShop.db";
+            var dataBasePath = testingData != null ? testingData.DataBasePath  
+                               : HttpContext.Current.Server.MapPath("~/App_Data") + "\\WebShop.db";
 
             kernel.Bind<NhibernateSessionFactoryProvider>()
                 .ToSelf()

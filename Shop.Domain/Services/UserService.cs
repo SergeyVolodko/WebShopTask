@@ -1,7 +1,7 @@
-﻿
-using Shop.Domain.Entities;
+﻿using Shop.Domain.Entities;
+using Shop.Domain.Repositories;
 
-namespace Shop.Domain
+namespace Shop.Domain.Services
 {
     public enum ServiceStatus
     {
@@ -13,13 +13,12 @@ namespace Shop.Domain
     {
         private readonly IUserRepository repository;
 
-
         public UserService(IUserRepository repository)
         {
             this.repository = repository;
         }
 
-        public ServiceStatus RegisterUser(UserModel newUser)
+        public ServiceStatus RegisterUser(User newUser)
         {
             if (!repository.UserExists(newUser.Login))
             {
@@ -29,7 +28,7 @@ namespace Shop.Domain
             return ServiceStatus.Conflict;
         }
 
-        public UserModel LoginUser(string login, string password)
+        public User LoginUser(string login, string password)
         {
             if (repository.UserExists(login))
             {

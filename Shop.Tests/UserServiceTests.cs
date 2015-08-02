@@ -3,6 +3,8 @@ using NSubstitute;
 using Ploeh.AutoFixture.Xunit;
 using Shop.Domain;
 using Shop.Domain.Entities;
+using Shop.Domain.Repositories;
+using Shop.Domain.Services;
 using Xunit.Extensions;
 
 namespace Shop.Tests
@@ -16,7 +18,7 @@ namespace Shop.Tests
         public void register_nonexisting_user_invoke_repository_create_user(
             [Frozen]IUserRepository repo,
             UserService sut,
-            UserModel newUser)
+            User newUser)
         {
             repo.UserExists(newUser.Login)
                 .Returns(false);
@@ -32,7 +34,7 @@ namespace Shop.Tests
         public void register_user_invoke_repository_user_exists(
             [Frozen]IUserRepository repo,
             UserService sut,
-            UserModel newUser)
+            User newUser)
         {
             sut.RegisterUser(newUser);
 
@@ -45,7 +47,7 @@ namespace Shop.Tests
         public void register_user_should_return_status_ok(
             [Frozen] IUserRepository repo,
             UserService sut,
-            UserModel newUser)
+            User newUser)
         {
             repo.UserExists(newUser.Login)
                 .Returns(false);
@@ -59,7 +61,7 @@ namespace Shop.Tests
         public void register_existing_user_should_return_conflict(
             [Frozen] IUserRepository repo,
             UserService sut,
-            UserModel newUser)
+            User newUser)
         {
             repo.UserExists(newUser.Login)
                 .Returns(true);
@@ -74,7 +76,7 @@ namespace Shop.Tests
         public void authonticate_user_should_invoke_repository_user_exists(
             [Frozen] IUserRepository repo,
             UserService sut,
-            UserModel user)
+            User user)
         {
             sut.LoginUser(user.Login, user.Password);
 
@@ -87,7 +89,7 @@ namespace Shop.Tests
         public void authonticate_existing_user_should_invoke_repository_get_user_by_login_and_pass(
             [Frozen] IUserRepository repo,
             UserService sut,
-            UserModel user)
+            User user)
         {
             repo.UserExists(user.Login)
                 .Returns(true);
@@ -103,7 +105,7 @@ namespace Shop.Tests
         public void authonticate_user_with_not_existing_login_should_return_notauthorized_user(
             [Frozen] IUserRepository repo,
             UserService sut,
-            UserModel user)
+            User user)
         {
             repo.UserExists(user.Login)
                 .Returns(false);
@@ -118,7 +120,7 @@ namespace Shop.Tests
         public void authonticate_user_with_wrong_password_should_return_notauthorized_user(
             [Frozen] IUserRepository repo,
             UserService sut,
-            UserModel user)
+            User user)
         {
             repo.UserExists(user.Login)
                 .Returns(true);
@@ -136,7 +138,7 @@ namespace Shop.Tests
         public void authonticate_user_corret_creds_should_return_that_user(
             [Frozen] IUserRepository repo,
             UserService sut,
-            UserModel user)
+            User user)
         {
             repo.UserExists(user.Login)
                 .Returns(true);

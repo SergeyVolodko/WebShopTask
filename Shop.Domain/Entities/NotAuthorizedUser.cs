@@ -1,7 +1,7 @@
 ﻿
 namespace Shop.Domain.Entities
 {
-    public class NotAuthorizedUser: UserModel
+    public class NotAuthorizedUser: User
     {
         public bool NotAuthorized = true;
     }

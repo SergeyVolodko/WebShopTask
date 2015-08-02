@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Shop.Domain;
 using Shop.Domain.Entities;
+using Shop.Domain.Services;
 
 namespace Shop.Site.Controllers
 {
@@ -14,7 +15,7 @@ namespace Shop.Site.Controllers
             userService = service;
         }
 
-        public object Post(UserModel newUser)
+        public object Post(User newUser)
         {
             return
                 userService.RegisterUser(newUser) == ServiceStatus.Conflict ?

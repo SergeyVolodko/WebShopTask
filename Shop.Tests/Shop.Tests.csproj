@@ -124,10 +124,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consts.cs" />
+    <Compile Include="ArticleServiceTests.cs" />
+    <Compile Include="Integration\Consts.cs" />
+    <Compile Include="Controllers\ArticlesControllerTests.cs" />
+    <Compile Include="Integration\ArticleXMLRepositoryIntTests.cs" />
     <Compile Include="Integration\NHibUserRepositoryIntTests.cs" />
     <Compile Include="Controllers\LoginUserControllerTests.cs" />
-    <Compile Include="NhibUserRepositoryTests.cs" />
+    <Compile Include="UserNhibRepositoryTests.cs" />
     <Compile Include="Integration\NinjectIntTests.cs" />
     <Compile Include="Attributes\ShopControllerAutoDataAttribute.cs" />
     <Compile Include="Attributes\ShopAutoDataAttribute.cs" />

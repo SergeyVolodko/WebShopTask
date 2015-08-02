@@ -1,18 +1,18 @@
 ﻿using NHibernate;
 using Shop.Domain.Entities;
 
-namespace Shop.Domain
+namespace Shop.Domain.Repositories
 {
-    public class NHibUserRepository: IUserRepository
+    public class UserNHibRepository: IUserRepository
     {
         private readonly ISession session;
         
-        public NHibUserRepository(ISession session)
+        public UserNHibRepository(ISession session)
         {
             this.session = session;
         }
 
-        public void CreateUser(UserModel newUser)
+        public void CreateUser(User newUser)
         {
             using (ITransaction transaction = session.BeginTransaction())
             {
@@ -23,15 +23,15 @@ namespace Shop.Domain
 
         public bool UserExists(string login)
         {
-            var existingUsers = session.QueryOver<UserModel>()
+            var existingUsers = session.QueryOver<User>()
                                 .Where(u => u.Login == login);
 
             return existingUsers.RowCount() > 0;
         }
 
-        public UserModel GetUserByLoginAndPassword(string login, string password)
+        public User GetUserByLoginAndPassword(string login, string password)
         {
-            return session.QueryOver<UserModel>()
+            return session.QueryOver<User>()
                     .Where(u => u.Login == login
                                 && u.Password == password)
                     .SingleOrDefault();

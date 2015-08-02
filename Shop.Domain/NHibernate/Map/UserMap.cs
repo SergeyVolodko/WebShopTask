@@ -3,7 +3,7 @@ using Shop.Domain.Entities;
 
 namespace Shop.Domain.NHibernate.Map
 {
-    public class UserMap: ClassMap<UserModel>
+    public class UserMap: ClassMap<User>
     {
         public UserMap()
         {

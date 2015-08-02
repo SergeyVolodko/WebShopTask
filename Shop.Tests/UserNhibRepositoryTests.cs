@@ -6,13 +6,14 @@ using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.Xunit;
 using Shop.Domain;
 using Shop.Domain.Entities;
+using Shop.Domain.Repositories;
 using Xunit;
 using Xunit.Extensions;
 using NHibernate;
 
 namespace Shop.Tests
 {
-    public class NhibUserRepositoryTests
+    public class UserNhibRepositoryTests
     {
 
         // TODO: how to check LINQ queries?
@@ -27,8 +28,8 @@ namespace Shop.Tests
         [ShopAutoData]
         public void create_user_invoke_session_save(
             [Frozen]ISession session,
-            NHibUserRepository repository,
-            UserModel newUser)
+            UserNHibRepository repository,
+            User newUser)
         {
             repository.CreateUser(newUser);
             
@@ -40,26 +41,26 @@ namespace Shop.Tests
         [ShopAutoData]
         public void user_exists_invoke_session_query_over(
             [Frozen]ISession session,
-            NHibUserRepository repository,
+            UserNHibRepository repository,
             string login)
         {
             repository.UserExists(login);
-            session.Received().QueryOver<UserModel>();
+            session.Received().QueryOver<User>();
         }
         
         [Theory]
         [ShopAutoData]
         public void user_exists_invoke_proper_query_to_session(
             [Frozen]ISession session,
-            NHibUserRepository repository,
-            UserModel user1,
-            UserModel user2)
+            UserNHibRepository repository,
+            User user1,
+            User user2)
         {
             //arrange
-            Expression<Func<UserModel, bool>> actualFilter = null;
+            Expression<Func<User, bool>> actualFilter = null;
 
-            session.QueryOver<UserModel>()
-                .Where(Arg.Do<Expression<Func<UserModel, bool>>>(filter => actualFilter = filter));
+            session.QueryOver<User>()
+                .Where(Arg.Do<Expression<Func<User, bool>>>(filter => actualFilter = filter));
                 
             //act
             repository.UserExists(user1.Login);
@@ -75,28 +76,28 @@ namespace Shop.Tests
         [ShopAutoData]
         public void get_user_by_login_and_password_invoke_session_query_over(
             [Frozen]ISession session,
-            NHibUserRepository repository,
+            UserNHibRepository repository,
             string login,
             string password)
         {
             repository.GetUserByLoginAndPassword(login, password);
 
-            session.Received().QueryOver<UserModel>();
+            session.Received().QueryOver<User>();
         }
 
         [Theory]
         [ShopAutoData]
         public void get_user_by_login_and_password_invoke_proper_query_to_session(
            [Frozen]ISession session,
-           NHibUserRepository repository,
-           UserModel user1,
-           UserModel user2)
+           UserNHibRepository repository,
+           User user1,
+           User user2)
         {
             //arrange
-            Expression<Func<UserModel, bool>> actualFilter = null;
+            Expression<Func<User, bool>> actualFilter = null;
 
-            session.QueryOver<UserModel>()
-                .Where(Arg.Do<Expression<Func<UserModel, bool>>>(filter => actualFilter = filter));
+            session.QueryOver<User>()
+                .Where(Arg.Do<Expression<Func<User, bool>>>(filter => actualFilter = filter));
 
             //act
             repository.GetUserByLoginAndPassword(user1.Login, user1.Password);

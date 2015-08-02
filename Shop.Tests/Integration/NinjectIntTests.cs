@@ -4,6 +4,8 @@ using System.Linq;
 using FluentAssertions;
 using Ninject;
 using Shop.Domain;
+using Shop.Domain.Repositories;
+using Shop.Domain.Services;
 using Shop.Site;
 using Xunit.Extensions;
 
@@ -17,7 +19,7 @@ namespace Shop.Tests.Integration
         [PropertyData("ControllerTypes")]
         public void should_return_all_repositories_services_and_controllers(Type type)
         {
-            var kernel = new Global(Consts.TEST_DB_PATH).GetKernel();
+            var kernel = new Global(Consts.TEST_APP_DATA).GetKernel();
 
             kernel.Get(type)
                 .Should().NotBeNull();
@@ -48,7 +50,7 @@ namespace Shop.Tests.Integration
         {
             get
             {
-                return typeof (UserService).Assembly
+                return typeof (IUserRepository).Assembly
                     .GetTypes()
                     .Where(t => t.IsInterface && t.Name.EndsWith("Repository"))
                     .Select(t => new object[] {t});

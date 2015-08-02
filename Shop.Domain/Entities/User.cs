@@ -2,7 +2,7 @@
 
 namespace Shop.Domain.Entities
 {
-    public class UserModel
+    public class User
     {
         public virtual Guid Id { get; set; }
         public virtual string Login { get; set; }

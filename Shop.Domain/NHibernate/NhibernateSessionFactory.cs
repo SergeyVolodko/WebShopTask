@@ -23,7 +23,7 @@ namespace Shop.Domain.NHibernate
 
             var fluentConfiguration = Fluently.Configure()
                                                .Database(SQLiteConfiguration.Standard.ConnectionString(connectionString))
-                                               .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserModel>())
+                                               .Mappings(m => m.FluentMappings.AddFromAssemblyOf<User>())
                                                //.ExposeConfiguration(BuidSchema)
                                                .BuildConfiguration();
  
