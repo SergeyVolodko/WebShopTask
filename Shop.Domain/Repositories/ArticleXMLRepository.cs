@@ -31,6 +31,18 @@ namespace Shop.Domain.Repositories
             return result;
         }
 
+        public List<Article> GetTenArticles(int startIndex)
+        {
+            var articles = GetAll();
+            return articles.GetRange(startIndex, 10);
+        }
+
+        public int GetArticlesCount()
+        {
+            var articles = GetAll();
+            return articles.Count;
+        }
+
         public void Save(List<Article> articles)
         {
             var serializer = new XmlSerializer(typeof(List<Article>));

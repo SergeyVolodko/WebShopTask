@@ -18,5 +18,17 @@ namespace Shop.Domain.Services
         {
             return repository.GetAll();
         }
+
+        public List<Article> GetTenArticlesFromIndex(int startIndex)
+        {
+            var count = repository.GetArticlesCount();
+            if (startIndex > count)
+            {
+                int lastAvailableIndex = count / 10;
+                return repository.GetTenArticles(lastAvailableIndex);
+            }
+
+            return repository.GetTenArticles(startIndex);
+        }
     }
 }

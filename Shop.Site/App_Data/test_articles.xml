@@ -1,15 +1,83 @@
 <?xml version="1.0"?>
 <ArrayOfArticle xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Article Name="Namef7c78c6e-9f83-4624-a0e9-da84f5994bcd">
-    <Description>Descriptiona27659ec-9992-4a95-84b6-b259675f0845</Description>
-    <Price>158</Price>
+  <Article Name="Namec01fbad1-dcf0-4197-927d-b109480bd91b">
+    <Description>Description458aafdc-6f85-42b7-bb31-60794845b592</Description>
+    <Price>149</Price>
   </Article>
-  <Article Name="Namea480734d-342e-4833-ba0f-9e1f6620e230">
-    <Description>Descriptioncc7472a3-fe5d-4cd8-a00a-534b4315b577</Description>
-    <Price>208</Price>
+  <Article Name="Name840162ed-9db5-460f-9c1e-4fa1b38976cd">
+    <Description>Descriptionddd3730d-14f2-4079-9a69-a5a9b0de007a</Description>
+    <Price>47</Price>
   </Article>
-  <Article Name="Namee9553b29-3fbe-4f70-bbde-d078751f5938">
-    <Description>Description795b43b5-e1e9-4978-a358-90a219ba9238</Description>
-    <Price>1</Price>
+  <Article Name="Nameee9a81fe-a90e-40e0-9be8-fd68f8e71c00">
+    <Description>Description4dfcec32-8893-4841-a878-3da8d107ca62</Description>
+    <Price>5</Price>
+  </Article>
+  <Article Name="Name3ce318cd-f1bc-4aaf-9298-bfa9c28a7950">
+    <Description>Descriptionaf252a73-5cb9-4400-a812-020f49ae1238</Description>
+    <Price>3</Price>
+  </Article>
+  <Article Name="Name617bc065-b24f-41f4-ba0b-4cdd3e8cbf15">
+    <Description>Description9b8f805a-6bd1-4348-972a-7c62aa406c99</Description>
+    <Price>153</Price>
+  </Article>
+  <Article Name="Name54544ee0-8e5a-4f9a-8377-3a27b716cc93">
+    <Description>Description1391a1f3-aac0-4745-b5f5-9624f08bd3bf</Description>
+    <Price>71</Price>
+  </Article>
+  <Article Name="Name1bf86ee9-99b2-4663-9f30-27d731705e9a">
+    <Description>Descriptioneae845cd-6193-4b88-9ba3-86bab2b2f698</Description>
+    <Price>169</Price>
+  </Article>
+  <Article Name="Name6df78455-cd8b-468b-b6c9-d8f3bbc8a632">
+    <Description>Description46cde2d0-c6ea-4178-a7f8-44ed81790a63</Description>
+    <Price>228</Price>
+  </Article>
+  <Article Name="Namece0f25e2-5929-4e80-83d9-c10172398689">
+    <Description>Description5f9f2215-210b-4499-93bf-d7da346eff8d</Description>
+    <Price>183</Price>
+  </Article>
+  <Article Name="Name40b29318-1cc3-45cf-9cb2-fad65024f1e7">
+    <Description>Description0dc1b0ec-8f74-41a5-98b3-dd4c593fa9ce</Description>
+    <Price>131</Price>
+  </Article>
+  <Article Name="Name58339a47-c46b-4ada-8da8-d86b54bb36e6">
+    <Description>Description262f83b0-11a8-4ea6-b405-2be8f13157ea</Description>
+    <Price>91</Price>
+  </Article>
+  <Article Name="Name616ae2c3-bb92-4c3c-a5e7-a87a04170a55">
+    <Description>Descriptioneb405fdb-ae1d-4dcf-b661-e5ae1dc667c4</Description>
+    <Price>117</Price>
+  </Article>
+  <Article Name="Namef81dcff3-0567-402a-8024-a6a61b64a603">
+    <Description>Descriptionfc122dfd-ca0e-46f9-93cc-943f8b286f23</Description>
+    <Price>81</Price>
+  </Article>
+  <Article Name="Name1a2b217a-2f3f-4100-9fbd-b46ec24bc6c0">
+    <Description>Descriptionb630f260-889e-41b2-a575-23ff5feae75d</Description>
+    <Price>66</Price>
+  </Article>
+  <Article Name="Name590713cb-f57d-450a-b5b3-f30b64028049">
+    <Description>Description3a8246ee-8260-4f5d-8aeb-dec7f24a7d90</Description>
+    <Price>114</Price>
+  </Article>
+  <Article Name="Name8ae4600c-2669-48cf-b2c4-b0f17d97a362">
+    <Description>Description1d0dd705-85fa-48c5-ac7c-319db74fc03f</Description>
+    <Price>40</Price>
+  </Article>
+  <Article Name="Namebb503f6d-7ef3-4c80-a3fd-2b8ea670d765">
+    <Description>Description4e2ed000-527b-4362-a181-00790f808901</Description>
+    <Price>57</Price>
+  </Article>
+  <Article Name="Name2a1760b2-6dbf-49e0-88a0-9e959240d576">
+    <Description>Descriptioncfae7c3f-350c-4ad6-969c-f84bf3c9e200</Description>
+    <Price>16</Price>
+  </Article>
+  <Article Name="Nameb4e962d5-9844-4513-b772-9222d23524ad">
+    <Description>Description4526fb1f-ac92-45b4-ad0b-3a8c65479c35</Description>
+    <Price>110</Price>
+  </Article>
+  <Article Name="Name483f5752-c6c5-4107-a0d2-52dfa7ee2ea5">
+    <Description>Description129b488d-1af0-4ad1-ab64-d34b409fea6f</Description>
+    <Price>185</Price>
   </Article>
 </ArrayOfArticle>

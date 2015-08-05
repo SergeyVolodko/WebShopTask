@@ -18,5 +18,12 @@ namespace Shop.Site.Controllers
         {
             return articleService.GetAllArticles();
         }
+
+        public List<Article> GetPageArticles(int pageNumber)
+        {
+            // TODO: isn't it a mixing of responisbilities if use service.getPageArticcles ?
+            var startIndex = pageNumber * 10 - 10;
+            return articleService.GetTenArticlesFromIndex(startIndex);
+        }
     }
 }

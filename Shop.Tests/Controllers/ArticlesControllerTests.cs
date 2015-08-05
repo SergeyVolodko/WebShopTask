@@ -43,5 +43,36 @@ namespace Shop.Tests.Controllers
             service.Received()
                 .GetAllArticles();
         }
+
+        [Theory]
+        [ShopControllerAutoData]
+        public void get_page_articles_returns_list_of_10_articles(
+            [Frozen] IArticleService service,
+            ArticleController sut,
+            List<Article> articles)
+        {
+            service.GetTenArticlesFromIndex(0)
+                .Returns(articles);
+
+            sut.GetPageArticles(1)
+                .ShouldAllBeEquivalentTo(articles);
+        }
+        
+        [Theory]
+        [InlineData(1, 0)]
+        [InlineData(2, 10)]
+        [InlineData(3, 20)]
+        public void get_page_articles_for_specific_page_should_call_service_with_proper_parameter(
+            int pageNumber,
+            int startIndex)
+        {
+            var service = Substitute.For<IArticleService>();
+            var sut = new ArticleController(service);
+            
+            sut.GetPageArticles(pageNumber);
+
+            service.Received()
+                .GetTenArticlesFromIndex(startIndex);
+        }
     }
 }
