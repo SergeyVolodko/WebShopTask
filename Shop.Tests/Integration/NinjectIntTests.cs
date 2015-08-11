@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Ninject;
-using Shop.Domain;
 using Shop.Domain.Repositories;
 using Shop.Domain.Services;
 using Shop.Site;
@@ -17,6 +16,7 @@ namespace Shop.Tests.Integration
         [PropertyData("RepositoryTypes")]
         [PropertyData("ServiceTypes")]
         [PropertyData("ControllerTypes")]
+        [PropertyData("FactoryTypes")]
         public void should_return_all_repositories_services_and_controllers(Type type)
         {
             var kernel = new Global(Consts.TEST_APP_DATA).GetKernel();
@@ -53,6 +53,17 @@ namespace Shop.Tests.Integration
                 return typeof (IUserRepository).Assembly
                     .GetTypes()
                     .Where(t => t.IsInterface && t.Name.EndsWith("Repository"))
+                    .Select(t => new object[] {t});
+            }
+        }
+        
+        public static IEnumerable<object[]> FactoryTypes
+        {
+            get
+            {
+                return typeof (IUserRepository).Assembly
+                    .GetTypes()
+                    .Where(t => t.IsInterface && t.Name.EndsWith("Factory"))
                     .Select(t => new object[] {t});
             }
         }

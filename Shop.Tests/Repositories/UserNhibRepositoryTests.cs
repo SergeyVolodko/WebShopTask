@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq.Expressions;
 using FluentAssertions;
+using FluentAssertions.Common;
+using NHibernate;
 using NSubstitute;
-using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.Xunit;
-using Shop.Domain;
 using Shop.Domain.Entities;
+using Shop.Domain.NHibernate.Dto;
 using Shop.Domain.Repositories;
 using Xunit;
 using Xunit.Extensions;
-using NHibernate;
 
-namespace Shop.Tests
+namespace Shop.Tests.Repositories
 {
     public class UserNhibRepositoryTests
     {
@@ -28,42 +28,45 @@ namespace Shop.Tests
         [ShopAutoData]
         public void create_user_invoke_session_save(
             [Frozen]ISession session,
-            UserNHibRepository repository,
+            UserNHibRepository sut,
             User newUser)
         {
-            repository.CreateUser(newUser);
+            sut.CreateUser(newUser);
             
             session.Received()
-                .Save(newUser);
+                .Save(Arg.Any<UserDto>());
         } 
         
         [Theory]
         [ShopAutoData]
         public void user_exists_invoke_session_query_over(
             [Frozen]ISession session,
-            UserNHibRepository repository,
+            UserNHibRepository sut,
             string login)
         {
-            repository.UserExists(login);
-            session.Received().QueryOver<User>();
+            sut.UserExists(login);
+
+            session
+                .Received()
+                .QueryOver<UserDto>();
         }
         
         [Theory]
         [ShopAutoData]
         public void user_exists_invoke_proper_query_to_session(
             [Frozen]ISession session,
-            UserNHibRepository repository,
+            UserNHibRepository sut,
             User user1,
             User user2)
         {
             //arrange
-            Expression<Func<User, bool>> actualFilter = null;
+            Expression<Func<UserDto, bool>> actualFilter = null;
 
-            session.QueryOver<User>()
-                .Where(Arg.Do<Expression<Func<User, bool>>>(filter => actualFilter = filter));
+            session.QueryOver<UserDto>()
+                .Where(Arg.Do<Expression<Func<UserDto, bool>>>(filter => actualFilter = filter));
                 
             //act
-            repository.UserExists(user1.Login);
+            sut.UserExists(user1.Login);
   
             //assert
             var compiledActualFilter = actualFilter.Compile();
@@ -82,7 +85,7 @@ namespace Shop.Tests
         {
             repository.GetUserByLoginAndPassword(login, password);
 
-            session.Received().QueryOver<User>();
+            session.Received().QueryOver<UserDto>();
         }
 
         [Theory]
@@ -94,10 +97,10 @@ namespace Shop.Tests
            User user2)
         {
             //arrange
-            Expression<Func<User, bool>> actualFilter = null;
+            Expression<Func<UserDto, bool>> actualFilter = null;
 
-            session.QueryOver<User>()
-                .Where(Arg.Do<Expression<Func<User, bool>>>(filter => actualFilter = filter));
+            session.QueryOver<UserDto>()
+                .Where(Arg.Do<Expression<Func<UserDto, bool>>>(filter => actualFilter = filter));
 
             //act
             repository.GetUserByLoginAndPassword(user1.Login, user1.Password);

@@ -1,15 +1,19 @@
 ﻿using System;
-using System.Xml.Serialization;
+using Shop.Domain.NHibernate.Dto;
 
 namespace Shop.Domain.Entities
 {
-    [Serializable]
-    [XmlRoot("Article")]
     public class Article
     {
-        [XmlAttribute]
-        public string Name;
-        public string Description;
-        public double Price;
+        public Guid? Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+
+        public static implicit operator ArticleDto(Article article)
+        {
+            return new DtoMapper<ArticleDto>()
+                .MapFrom(article);
+        }
     }
 }

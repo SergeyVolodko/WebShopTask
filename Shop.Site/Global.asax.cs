@@ -8,6 +8,7 @@ using NHibernate;
 using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Web.Common;
+using Shop.Domain;
 using Shop.Domain.Repositories;
 using Shop.Domain.Services;
 using Shop.Site.App_Start;
@@ -54,6 +55,8 @@ namespace Shop.Site
 
             BindRepositories(kernel);
 
+            kernel.Bind<ICartFactory>().To<CartFactory>();
+
             BindAllServices(kernel);
 
             BindAllControllers(kernel);
@@ -65,8 +68,10 @@ namespace Shop.Site
                                   : HttpContext.Current.Server.MapPath("~/App_Data") + "\\articles.xml";
 
             kernel.Bind<IUserRepository>().To<UserNHibRepository>();
-            kernel.Bind<IArticleRepository>().To<ArticleXMLRepository>()
-                .WithConstructorArgument("xmlFile", articlesXmlPath);
+            kernel.Bind<ICartRepository>().To<CartNHibRepository>();
+            kernel.Bind<IArticleRepository>().To<ArticleNhibRepository>();
+            //kernel.Bind<IArticleRepository>().To<ArticleXMLRepository>()
+            //    .WithConstructorArgument("xmlFile", articlesXmlPath);
         }
 
         private void BindAllControllers(IKernel kernel)

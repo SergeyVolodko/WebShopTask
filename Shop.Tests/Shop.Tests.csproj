@@ -124,19 +124,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleServiceTests.cs" />
+    <Compile Include="DtoMapperTests.cs" />
+    <Compile Include="ArticleDataFactory.cs" />
+    <Compile Include="FactoriesTests.cs" />
+    <Compile Include="Integration\CartRepositoryIntTests.cs" />
+    <Compile Include="Integration\CartServiceIntTests.cs" />
+    <Compile Include="Repositories\CartNhibRepositoryTests.cs" />
+    <Compile Include="Services\ArticleServiceTests.cs" />
+    <Compile Include="CartDataBuilder.cs" />
+    <Compile Include="Controllers\CartControllerTests.cs" />
     <Compile Include="Integration\Consts.cs" />
     <Compile Include="Controllers\ArticlesControllerTests.cs" />
-    <Compile Include="Integration\ArticleXMLRepositoryIntTests.cs" />
-    <Compile Include="Integration\NHibUserRepositoryIntTests.cs" />
+    <Compile Include="Integration\ArticleRepositoryIntTests.cs" />
+    <Compile Include="Integration\UserRepositoryIntTests.cs" />
     <Compile Include="Controllers\LoginUserControllerTests.cs" />
-    <Compile Include="UserNhibRepositoryTests.cs" />
+    <Compile Include="Services\CartServiceTests.cs" />
+    <Compile Include="Repositories\UserNhibRepositoryTests.cs" />
     <Compile Include="Integration\NinjectIntTests.cs" />
     <Compile Include="Attributes\ShopControllerAutoDataAttribute.cs" />
     <Compile Include="Attributes\ShopAutoDataAttribute.cs" />
     <Compile Include="Controllers\UserControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserServiceTests.cs" />
+    <Compile Include="Services\UserServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -152,7 +161,9 @@
       <Name>Shop.Site</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ad_hoc\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

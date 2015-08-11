@@ -1,5 +1,6 @@
 ﻿using NHibernate;
 using Shop.Domain.Entities;
+using Shop.Domain.NHibernate.Dto;
 
 namespace Shop.Domain.Repositories
 {
@@ -16,14 +17,14 @@ namespace Shop.Domain.Repositories
         {
             using (ITransaction transaction = session.BeginTransaction())
             {
-                session.Save(newUser);
+                session.Save((UserDto)newUser);
                 transaction.Commit();
             }
         }
 
         public bool UserExists(string login)
         {
-            var existingUsers = session.QueryOver<User>()
+            var existingUsers = session.QueryOver<UserDto>()
                                 .Where(u => u.Login == login);
 
             return existingUsers.RowCount() > 0;
@@ -31,10 +32,13 @@ namespace Shop.Domain.Repositories
 
         public User GetUserByLoginAndPassword(string login, string password)
         {
-            return session.QueryOver<User>()
+            var dto = session.QueryOver<UserDto>()
                     .Where(u => u.Login == login
-                                && u.Password == password)
+                             && u.Password == password)
                     .SingleOrDefault();
+
+            return dto == null ? null 
+                    : (User)dto;
         }
     }
 }

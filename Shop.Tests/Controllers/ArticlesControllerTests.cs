@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NSubstitute;
 using Ploeh.AutoFixture.Xunit;
-using Shop.Domain.Entities;
 using Shop.Domain.Services;
 using Shop.Site.Controllers;
 using Xunit;
@@ -22,9 +20,11 @@ namespace Shop.Tests.Controllers
         [ShopControllerAutoData]
         public void get_returns_list_of_all_stored_articles(
             [Frozen] IArticleService service,
-            ArticleController sut,
-            List<Article> articles)
+            ArticleController sut)
         {
+            var articles = new ArticleDataFactory()
+                .CreateManyArticles();
+            
             service.GetAllArticles()
                 .Returns(articles);
 
@@ -48,9 +48,11 @@ namespace Shop.Tests.Controllers
         [ShopControllerAutoData]
         public void get_page_articles_returns_list_of_10_articles(
             [Frozen] IArticleService service,
-            ArticleController sut,
-            List<Article> articles)
+            ArticleController sut)
         {
+            var articles = new ArticleDataFactory()
+                .CreateArticlesList(10);
+
             service.GetTenArticlesFromIndex(0)
                 .Returns(articles);
 

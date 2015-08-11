@@ -9,7 +9,7 @@ using Shop.Domain.Repositories;
 using Shop.Domain.Services;
 using Xunit.Extensions;
 
-namespace Shop.Tests
+namespace Shop.Tests.Services
 {
     public class ArticleServiceTests
     {
@@ -17,8 +17,7 @@ namespace Shop.Tests
         [ShopAutoData] 
         public void get_all_articles_returns_empty_list_if_no_articles_stored(
             [Frozen] IArticleRepository repo,
-            ArticleService sut,
-            List<Article> articles)
+            ArticleService sut)
         {
             repo.GetAll()
                 .Returns(new List<Article>());
@@ -31,9 +30,11 @@ namespace Shop.Tests
         [ShopAutoData]
         public void get_all_articles_returns_list_of_all_stored_articles(
             [Frozen] IArticleRepository repo,
-            ArticleService sut,
-            List<Article> articles)
+            ArticleService sut)
         {
+            var articles = new ArticleDataFactory()
+                .CreateManyArticles();
+
             repo.GetAll()
                 .Returns(articles);
 
@@ -47,10 +48,11 @@ namespace Shop.Tests
             [Frozen] IArticleRepository repo,
             ArticleService sut)
         {
-            var fixture = new Fixture();
-            fixture.RepeatCount = 10;
-            var articlesFrom0To10 = fixture.CreateMany<Article>().ToList();
-            var articlesFrom10To20 = fixture.CreateMany<Article>().ToList();
+            var dataFactory = new ArticleDataFactory();
+            var articlesFrom0To10 = dataFactory
+                                    .CreateArticlesList(10);
+            var articlesFrom10To20 = dataFactory
+                                      .CreateArticlesList(10);
 
             repo.GetTenArticles(0)
                 .Returns(articlesFrom0To10);
@@ -69,9 +71,11 @@ namespace Shop.Tests
         [ShopAutoData]
         public void get_ten_articles_from_too_big_index_should_return_last_available_articles(
             [Frozen] IArticleRepository repo,
-            ArticleService sut,
-            List<Article> articles)
+            ArticleService sut)
         {
+            var articles = new ArticleDataFactory()
+                .CreateManyArticles();
+
             var count = articles.Count;
 
             repo.GetTenArticles(0)

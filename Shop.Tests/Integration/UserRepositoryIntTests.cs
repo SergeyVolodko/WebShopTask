@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using Ninject;
-using Shop.Domain;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
 using Shop.Site;
@@ -8,11 +7,11 @@ using Xunit.Extensions;
 
 namespace Shop.Tests.Integration
 {
-    public class NHibUserRepositoryIntTests
+    public class UserRepositoryIntTests
     {
         private readonly IUserRepository repository;
         
-        public NHibUserRepositoryIntTests()
+        public UserRepositoryIntTests()
         {
             repository = new Global(Consts.TEST_APP_DATA)
                 .GetKernel().Get<IUserRepository>();
@@ -46,8 +45,7 @@ namespace Shop.Tests.Integration
             repository.CreateUser(existingUser);
 
             repository.GetUserByLoginAndPassword(existingUser.Login, existingUser.Password)
-                .Should()
-                .Be(existingUser);
+                .ShouldBeEquivalentTo(existingUser, o => o.Excluding(x => x.Id));
         }
         
         [Theory]

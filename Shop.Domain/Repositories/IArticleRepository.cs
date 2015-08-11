@@ -10,5 +10,6 @@ namespace Shop.Domain.Repositories
         List<Article> GetTenArticles(int startIndex);
         int GetArticlesCount();
         void Save(List<Article> articles);
+        Article Save(Article article);
     }
 }

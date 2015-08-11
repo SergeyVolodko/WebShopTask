@@ -1,13 +1,12 @@
 ﻿using FluentAssertions;
 using NSubstitute;
 using Ploeh.AutoFixture.Xunit;
-using Shop.Domain;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
 using Shop.Domain.Services;
 using Xunit.Extensions;
 
-namespace Shop.Tests
+namespace Shop.Tests.Services
 {
     public class UserServiceTests
     {

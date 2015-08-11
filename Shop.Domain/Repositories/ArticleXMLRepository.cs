@@ -52,5 +52,10 @@ namespace Shop.Domain.Repositories
                 serializer.Serialize(writer, articles);
             }
         }
+
+        public Article Save(Article article)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
