@@ -6,6 +6,6 @@ namespace Shop.Site.Models
     public class AddToCartData
     {
         public Guid? CartId;
-        public Article Article;
+        public Prdouct Prdouct;
     }
 }

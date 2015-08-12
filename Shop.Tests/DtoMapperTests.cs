@@ -11,15 +11,15 @@ namespace Shop.Tests
         [ShopAutoData]
         public void mappings_from_entities_to_dtos(
             User user,
-            Article article,
+            Prdouct prdouct,
             Cart cart)
         {
             var userDto = new DtoMapper<UserDto>().MapFrom(user);
-            var articleDto = new DtoMapper<ArticleDto>().MapFrom(article);
+            var productDto = new DtoMapper<ProductDto>().MapFrom(prdouct);
             var cartDto = (CartDto)cart;
 
             userDto.ShouldBeEquivalentTo(user);
-            articleDto.ShouldBeEquivalentTo(article, o => o.ExcludingMissingMembers());
+            productDto.ShouldBeEquivalentTo(prdouct, o => o.ExcludingMissingMembers());
             cartDto.ShouldBeEquivalentTo(cart, o => o.ExcludingMissingMembers());
         }
 
@@ -29,14 +29,14 @@ namespace Shop.Tests
             UserDto userDto)
         {
             var user = new DtoMapper<User>().MapFrom(userDto);
-            var articleDto = new ArticleDto();
-            var article = (Article)articleDto;
+            var productDto = new ProductDto();
+            var prdouct = (Prdouct)productDto;
             var cartDto = new CartDto();
-            cartDto.Articles.Add(articleDto);
+            cartDto.Products.Add(productDto);
             var cart = (Cart)cartDto;
 
             user.ShouldBeEquivalentTo(userDto);
-            article.ShouldBeEquivalentTo(articleDto, o => o.ExcludingMissingMembers());
+            prdouct.ShouldBeEquivalentTo(productDto, o => o.ExcludingMissingMembers());
             cart.ShouldBeEquivalentTo(cartDto, o => o.ExcludingMissingMembers());
         }
 

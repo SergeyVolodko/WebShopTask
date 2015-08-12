@@ -9,26 +9,26 @@ namespace Shop.Tests
     {
         [Theory]
         [ShopAutoData]
-        public void cart_factory_should_create_cart_with_proper_article_inside(
+        public void cart_factory_should_create_cart_with_proper_product_inside(
             CartFactory sut)
         {
-            var article = new ArticleDataFactory()
-                .CreateArticle();
+            var product = new ProductDataFactory()
+                .CreateProduct();
 
-            var actual = sut.CreateCart(article);
+            var actual = sut.CreateCart(product);
             
             actual
                 .Should()
                 .BeOfType<Cart>();
             actual
-                .Articles
+                .Products
                 .Count
                 .Should()
                 .Be(1);
             actual
-                .Articles
+                .Products
                 .Should()
-                .Contain(article);
+                .Contain(product);
         }
     }
 }

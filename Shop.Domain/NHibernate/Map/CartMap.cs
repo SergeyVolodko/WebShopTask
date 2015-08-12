@@ -11,9 +11,9 @@ namespace Shop.Domain.NHibernate.Map
 
             Id(x => x.Id).GeneratedBy.GuidComb();
 
-            HasManyToMany(x => x.Articles)
-               .Table("ArticleInCart")
-               .ParentKeyColumn("article_fk")
+            HasManyToMany(x => x.Products)
+               .Table("ProductInCart")
+               .ParentKeyColumn("product_fk")
                .ChildKeyColumn("cart_fk")
                .Cascade.SaveUpdate();
         }

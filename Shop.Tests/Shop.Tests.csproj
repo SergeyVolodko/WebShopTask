@@ -125,17 +125,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DtoMapperTests.cs" />
-    <Compile Include="ArticleDataFactory.cs" />
+    <Compile Include="ProductDataFactory.cs" />
     <Compile Include="FactoriesTests.cs" />
     <Compile Include="Integration\CartRepositoryIntTests.cs" />
     <Compile Include="Integration\CartServiceIntTests.cs" />
     <Compile Include="Repositories\CartNhibRepositoryTests.cs" />
-    <Compile Include="Services\ArticleServiceTests.cs" />
+    <Compile Include="Services\ProductServiceTests.cs" />
     <Compile Include="CartDataBuilder.cs" />
     <Compile Include="Controllers\CartControllerTests.cs" />
     <Compile Include="Integration\Consts.cs" />
-    <Compile Include="Controllers\ArticlesControllerTests.cs" />
-    <Compile Include="Integration\ArticleRepositoryIntTests.cs" />
+    <Compile Include="Controllers\ProductControllerTests.cs" />
+    <Compile Include="Integration\ProductRepositoryIntTests.cs" />
     <Compile Include="Integration\UserRepositoryIntTests.cs" />
     <Compile Include="Controllers\LoginUserControllerTests.cs" />
     <Compile Include="Services\CartServiceTests.cs" />

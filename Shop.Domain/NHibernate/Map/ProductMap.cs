@@ -3,11 +3,11 @@ using Shop.Domain.NHibernate.Dto;
 
 namespace Shop.Domain.NHibernate.Map
 {
-    public class ArticleMap: ClassMap<ArticleDto>
+    public class ProductMap: ClassMap<ProductDto>
     {
-        public ArticleMap()
+        public ProductMap()
         {
-            Table("Article");
+            Table("Prdouct");
 
             Id(x => x.Id).GeneratedBy.GuidComb();
             Map(x => x.Name);
@@ -15,9 +15,9 @@ namespace Shop.Domain.NHibernate.Map
             Map(x => x.Price);
 
             HasManyToMany(x => x.Carts)
-                .Table("ArticleInCart")
+                .Table("ProductInCart")
                 .ParentKeyColumn("cart_fk")
-                .ChildKeyColumn("article_fk")
+                .ChildKeyColumn("product_fk")
                 .Inverse()
                 .Cascade.SaveUpdate();
         }

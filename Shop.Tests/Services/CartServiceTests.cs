@@ -13,39 +13,39 @@ namespace Shop.Tests.Services
     {
         [Theory]
         [ShopAutoData]
-        public void add_article_to_empty_cart_invoke_factory_create_cart(
+        public void add_product_to_empty_cart_invoke_factory_create_cart(
             [Frozen] ICartFactory factory,
             CartService sut)
         {
-            var article = new ArticleDataFactory()
-                .CreateArticle();
+            var product = new ProductDataFactory()
+                .CreateProduct();
 
-            sut.AddArticleToCart(null, article);
+            sut.AddProductToCart(null, product);
 
             factory
                 .Received()
-                .CreateCart(article);
+                .CreateCart(product);
         }
         
         [Theory]
         [ShopAutoData]
-        public void add_article_to_empty_cart_invoke_repo_save(
+        public void add_product_to_empty_cart_invoke_repo_save(
             [Frozen] ICartRepository repo,
             [Frozen] ICartFactory factory,
             CartService sut)
         {
-            var article = new ArticleDataFactory()
-                .CreateArticle();
+            var product = new ProductDataFactory()
+                .CreateProduct();
 
             var cart = new CartDataBuilder()
                 .WithEmptyId()
-                .WithArticle(article)
+                .WithProduct(product)
                 .Build();
 
-            factory.CreateCart(article)
+            factory.CreateCart(product)
                 .Returns(cart);
             
-            sut.AddArticleToCart(null, article);
+            sut.AddProductToCart(null, product);
 
             repo.Received()
                 .Save(cart);
@@ -53,36 +53,36 @@ namespace Shop.Tests.Services
 
         [Theory]
         [ShopAutoData]
-        public void add_article_to_nonempty_cart_not_invoke_factory_create_cart(
+        public void add_product_to_nonempty_cart_not_invoke_factory_create_cart(
             [Frozen] ICartFactory factory,
             [Frozen] ICartRepository repo,
             CartService sut,
             Guid cartId,
-            Article article)
+            Prdouct prdouct)
         {
             var cart = new CartDataBuilder()
                 .WithId(cartId)
-                .WithArticle(article)
+                .WithProduct(prdouct)
                 .Build();
 
             repo.GetCartById(cartId)
                 .Returns(cart);
 
-            sut.AddArticleToCart(cartId, Arg.Any<Article>());
+            sut.AddProductToCart(cartId, Arg.Any<Prdouct>());
 
             factory.DidNotReceive()
-                .CreateCart(Arg.Any<Article>());
+                .CreateCart(Arg.Any<Prdouct>());
         }
 
         [Theory]
         [ShopAutoData]
-        public void add_article_to_nonempty_cart_invoke_repo_get_by_id(
+        public void add_product_to_nonempty_cart_invoke_repo_get_by_id(
             [Frozen] ICartRepository repo,
             CartService sut,
-            Article article,
+            Prdouct prdouct,
             Guid cartId)
         {
-            sut.AddArticleToCart(cartId, article);
+            sut.AddProductToCart(cartId, prdouct);
 
             repo.Received()
                 .GetCartById(cartId);
@@ -90,10 +90,10 @@ namespace Shop.Tests.Services
 
         [Theory]
         [ShopAutoData]
-        public void add_article_to_existung_cart_invoke_repo_save(
+        public void add_product_to_existung_cart_invoke_repo_save(
             [Frozen] ICartRepository repo,
             CartService sut,
-            Article article,
+            Prdouct prdouct,
             Guid cartId)
         {
             var cart = new CartDataBuilder()
@@ -103,7 +103,7 @@ namespace Shop.Tests.Services
             repo.GetCartById(cartId)
                 .Returns(cart);
 
-            sut.AddArticleToCart(cartId, article);
+            sut.AddProductToCart(cartId, prdouct);
 
             repo.Received()
                 .Save(cart);

@@ -13,54 +13,53 @@ namespace Shop.Tests.Integration
     public class CartServiceIntTests
     {
         private readonly IKernel kernel;
-        private readonly IArticleRepository repository;
+        private readonly IProductRepository repository;
 
         public CartServiceIntTests()
         {
             kernel = new Global(Consts.TEST_APP_DATA)
                 .GetKernel();
-            repository = kernel.Get<IArticleRepository>();
+            repository = kernel.Get<IProductRepository>();
         }
 
         [Theory]
         [ShopAutoData]
-        public void add_article_to_empty_cart_returns_new_cart_containing_article(
-            Article article)
+        public void add_product_to_empty_cart_returns_new_cart_containing_product(
+            Prdouct prdouct)
         {
-            article = repository.Save(article);
+            prdouct = repository.Save(prdouct);
             
             var sut = kernel.Get<ICartService>();
 
-            var actual = sut.AddArticleToCart(null, article);
+            var actual = sut.AddProductToCart(null, prdouct);
 
             actual
                 .Should()
                 .NotBeNull();
             actual
-                .Articles[0]
-                .ShouldBeEquivalentTo((ArticleDto)article);
+                .Products[0]
+                .ShouldBeEquivalentTo((ProductDto)prdouct);
         }
-        
-        //[Fact]
-        //public void add_article_to_existing_cart_returns_cart_containing_article()
-        //{
-        //    var articles = new ArticleDataFactory()
-        //        .CreateArticlesList(2);
-        //    //repository.Save(articles);
 
-        //    var sut = kernel.Get<ICartService>();
+        [Fact]
+        public void add_product_to_existing_cart_returns_cart_containing_product()
+        {
+            var products = new ProductDataFactory()
+                .CreateProductsList(2);
+            
+            var sut = kernel.Get<ICartService>();
 
-        //    var cart = sut.AddArticleToCart(null, articles[0]);
+            var cart = sut.AddProductToCart(null, products[0]);
 
-        //    var actual = sut.AddArticleToCart(cart.Id, articles[1]);
+            var actual = sut.AddProductToCart(cart.Id, products[1]);
 
-        //    actual.Id
-        //        .Should()
-        //        .Be(cart.Id);
-        //    actual
-        //        .Articles
-        //        .Should()
-        //        .Contain(articles[1]);
-        //}
+            actual.Id
+                .Should()
+                .Be(cart.Id);
+            actual
+                .Products
+                .Should()
+                .Contain(products[1]);
+        }
     }
 }

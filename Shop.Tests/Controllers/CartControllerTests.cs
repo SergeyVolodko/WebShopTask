@@ -12,29 +12,29 @@ namespace Shop.Tests.Controllers
     {
         [Theory]
         [ShopControllerAutoData]
-        public void post_article_to_empty_cart_returns_cart_with_this_article(
+        public void post_product_to_empty_cart_returns_cart_with_this_product(
             [Frozen] ICartService service,
             CartController sut)
         {
-            var article = new ArticleDataFactory()
-                .CreateArticle();
+            var product = new ProductDataFactory()
+                .CreateProduct();
             var cart = new CartDataBuilder()
-                .WithArticle(article)
+                .WithProduct(product)
                 .Build();
 
-            service.AddArticleToCart(null, article)
+            service.AddProductToCart(null, product)
                 .Returns(cart);
 
             var data = new AddToCartData
             {
                 CartId = null,
-                Article = article
+                Prdouct = product
             };
 
             sut.Post(data)
-                .Articles
+                .Products
                 .Should()
-                .Contain(article);
+                .Contain(product);
         }
     }
 }

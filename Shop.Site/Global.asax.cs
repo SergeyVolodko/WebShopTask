@@ -69,8 +69,8 @@ namespace Shop.Site
 
             kernel.Bind<IUserRepository>().To<UserNHibRepository>();
             kernel.Bind<ICartRepository>().To<CartNHibRepository>();
-            kernel.Bind<IArticleRepository>().To<ArticleNhibRepository>();
-            //kernel.Bind<IArticleRepository>().To<ArticleXMLRepository>()
+            kernel.Bind<IProductRepository>().To<ProductNhibRepository>();
+            //kernel.Bind<IProductRepository>().To<ProductXmlRepository>()
             //    .WithConstructorArgument("xmlFile", articlesXmlPath);
         }
 

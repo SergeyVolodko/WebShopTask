@@ -4,7 +4,7 @@ using Shop.Domain.Entities;
 
 namespace Shop.Domain.NHibernate.Dto
 {
-   public class ArticleDto
+   public class ProductDto
     {
         public virtual Guid? Id { get; set; }
         public virtual string Name { get; set; }
@@ -13,14 +13,14 @@ namespace Shop.Domain.NHibernate.Dto
 
         public virtual IList<CartDto> Carts { get; set; }
 
-        public ArticleDto()
+        public ProductDto()
         {
             this.Carts = new List<CartDto>();
         }
 
-        public static implicit operator Article(ArticleDto dto)
+        public static implicit operator Prdouct(ProductDto dto)
         {
-            return new DtoMapper<Article>().MapFrom(dto);
+            return new DtoMapper<Prdouct>().MapFrom(dto);
         }
     }
 }

@@ -6,60 +6,60 @@ using Shop.Domain.NHibernate.Dto;
 
 namespace Shop.Domain.Repositories
 {
-    public class ArticleNhibRepository: IArticleRepository
+    public class ProductNhibRepository: IProductRepository
     {
         private readonly ISession session;
 
-        public ArticleNhibRepository(ISession session)
+        public ProductNhibRepository(ISession session)
         {
             this.session = session;
         }
 
-        public List<Article> GetAll()
+        public List<Prdouct> GetAll()
         {
-            var articles = session.QueryOver<ArticleDto>().List();
-            return articles
-                .Select(a => (Article)a)
+            var products = session.QueryOver<ProductDto>().List();
+            return products
+                .Select(a => (Prdouct)a)
                 .ToList();
         }
 
-        public List<Article> GetTenArticles(int startIndex)
+        public List<Prdouct> GetTenProducts(int startIndex)
         {
-            var articles = session.QueryOver<ArticleDto>().List();
-            return articles
-                .Select(a => (Article)a)
+            var products = session.QueryOver<ProductDto>().List();
+            return products
+                .Select(a => (Prdouct)a)
                 .ToList()
                 .GetRange(startIndex, 10);
         }
 
-        public int GetArticlesCount()
+        public int GetProductsCount()
         {
-            return session.QueryOver<ArticleDto>().RowCount();
+            return session.QueryOver<ProductDto>().RowCount();
         }
 
-        public void Save(List<Article> articles)
+        public void Save(List<Prdouct> products)
         {
             using (ITransaction transaction = session.BeginTransaction())
             {
-                foreach (var article in articles)
+                foreach (var product in products)
                 {
-                    session.Save((ArticleDto)article);
+                    session.Save((ProductDto)product);
                 }
                 
                 transaction.Commit();
             }
         }
 
-        public Article Save(Article article)
+        public Prdouct Save(Prdouct prdouct)
         {
-            var dto = (ArticleDto)article;
+            var dto = (ProductDto)prdouct;
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Save(dto);
                 transaction.Commit();
             }
             return dto == null ? null
-                   : (Article)dto;
+                   : (Prdouct)dto;
         }
     }
 }

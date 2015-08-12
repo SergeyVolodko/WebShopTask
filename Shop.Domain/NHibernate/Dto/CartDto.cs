@@ -8,27 +8,27 @@ namespace Shop.Domain.NHibernate.Dto
     public class CartDto
     {
         public virtual Guid? Id { get; set; }
-        public virtual IList<ArticleDto> Articles { get; set; }
+        public virtual IList<ProductDto> Products { get; set; }
 
         public CartDto()
         {
-            this.Articles = new List<ArticleDto>();
+            this.Products = new List<ProductDto>();
         }
 
-        public virtual void AddArticle(ArticleDto article)
+        public virtual void AddProduct(ProductDto product)
         {
-            article.Carts.Add(this);
-            this.Articles.Add(article);
+            product.Carts.Add(this);
+            this.Products.Add(product);
         }
 
         public static implicit operator Cart(CartDto dto)
         {
-            var articles = dto.Articles.Select(article => (Article) article).ToList();
+            var products = dto.Products.Select(product => (Prdouct)product).ToList();
 
             var cart = new DtoMapper<Cart>()
                 .MapFrom(dto);
 
-            cart.Articles = articles;
+            cart.Products = products;
 
             return cart;
         }

@@ -5,38 +5,38 @@ using Shop.Domain.Entities;
 
 namespace Shop.Tests
 {
-    public class ArticleDataFactory
+    public class ProductDataFactory
     {
         private readonly Fixture fixture;
 
-        public ArticleDataFactory()
+        public ProductDataFactory()
         {
             fixture = new Fixture();
         }
 
-        public Article CreateArticle()
+        public Prdouct CreateProduct()
         {
             return
-                fixture.Build<Article>()
+                fixture.Build<Prdouct>()
                     .Without(a => a.Id)
                     .WithAutoProperties()
                     .Create();
         }
 
-        public List<Article> CreateArticlesList(int count)
+        public List<Prdouct> CreateProductsList(int count)
         {
             fixture.RepeatCount = count;
-            var articles = fixture.Build<Article>()
+            var products = fixture.Build<Prdouct>()
                 .Without(a => a.Id)
                 .WithAutoProperties()
                 .CreateMany().ToList();
 
-            return articles;
+            return products;
         }
 
-        public List<Article> CreateManyArticles()
+        public List<Prdouct> CreateManyProducts()
         {
-            return CreateArticlesList(3);
+            return CreateProductsList(3);
         }
 
     }

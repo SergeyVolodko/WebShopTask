@@ -8,32 +8,32 @@ namespace Shop.Domain.Entities
     public class Cart
     {
         public Guid? Id { get; set; }
-        public List<Article> Articles { get; set; }
+        public List<Prdouct> Products { get; set; }
 
         public Cart()
         {
-            this.Articles = new List<Article>();
+            this.Products = new List<Prdouct>();
         }
 
-        public virtual void AddArticle(Article article)
+        public virtual void AddProduct(Prdouct prdouct)
         {
-            this.Articles.Add(article);
+            this.Products.Add(prdouct);
         }
 
         public static implicit operator CartDto(Cart cart)
         {
-            var articleDTOs = cart.Articles
-                .Select(article => (ArticleDto) article)
+            var productDtos = cart.Products
+                .Select(product => (ProductDto)product)
                 .ToList();
 
             var cartDto = new DtoMapper<CartDto>()
                 .MapFrom(cart);
 
-            cartDto.Articles = articleDTOs;
-            //foreach (var articleDto in articleDTOs)
-            //{
-            //    articleDto.Carts.Add(cartDto);
-            //}
+            cartDto.Products = productDtos;
+            foreach (var productDto in productDtos)
+            {
+                productDto.Carts.Add(cartDto);
+            }
 
             return cartDto;
         }
