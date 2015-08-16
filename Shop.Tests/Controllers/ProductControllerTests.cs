@@ -53,28 +53,13 @@ namespace Shop.Tests.Controllers
             var products = new ProductDataFactory()
                 .CreateProductsList(10);
 
-            service.GetTenProductsFromIndex(0)
+            service.GetProductsForPage(1)
                 .Returns(products);
 
             sut.GetPageProducts(1)
                 .ShouldAllBeEquivalentTo(products);
         }
         
-        [Theory]
-        [InlineData(1, 0)]
-        [InlineData(2, 10)]
-        [InlineData(3, 20)]
-        public void get_page_products_for_specific_page_should_call_service_with_proper_parameter(
-            int pageNumber,
-            int startIndex)
-        {
-            var service = Substitute.For<IProductService>();
-            var sut = new ProductController(service);
-            
-            sut.GetPageProducts(pageNumber);
-
-            service.Received()
-                .GetTenProductsFromIndex(startIndex);
-        }
+        
     }
 }

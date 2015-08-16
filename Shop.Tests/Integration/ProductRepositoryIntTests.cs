@@ -21,7 +21,7 @@ namespace Shop.Tests.Integration
         //            .GetKernel().Get<IProductRepository>();
 
         //    repository.GetAll()
-        //        .ShouldAllBeEquivalentTo(new List<Prdouct>());
+        //        .ShouldAllBeEquivalentTo(new List<Product>());
         //}
 
         [Fact]

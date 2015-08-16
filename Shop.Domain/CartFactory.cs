@@ -4,10 +4,10 @@ namespace Shop.Domain
 {
     public class CartFactory: ICartFactory
     {
-        public Cart CreateCart(Prdouct prdouct)
+        public Cart CreateCart(Product product)
         {
             var cart = new Cart();
-            cart.AddProduct(prdouct);
+            cart.AddProduct(product);
 
             return cart;
         }

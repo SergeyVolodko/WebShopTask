@@ -16,7 +16,7 @@ namespace Shop.Site.Controllers
 
         public Cart Post(AddToCartData data)
         {
-            return cartService.AddProductToCart(data.CartId, data.Prdouct);
+            return cartService.AddProductToCart(data.CartId, data.Product);
         }
     }
 }

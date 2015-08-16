@@ -14,19 +14,19 @@ namespace Shop.Tests
             fixture = new Fixture();
         }
 
-        public Prdouct CreateProduct()
+        public Product CreateProduct()
         {
             return
-                fixture.Build<Prdouct>()
+                fixture.Build<Product>()
                     .Without(a => a.Id)
                     .WithAutoProperties()
                     .Create();
         }
 
-        public List<Prdouct> CreateProductsList(int count)
+        public List<Product> CreateProductsList(int count)
         {
             fixture.RepeatCount = count;
-            var products = fixture.Build<Prdouct>()
+            var products = fixture.Build<Product>()
                 .Without(a => a.Id)
                 .WithAutoProperties()
                 .CreateMany().ToList();
@@ -34,7 +34,7 @@ namespace Shop.Tests
             return products;
         }
 
-        public List<Prdouct> CreateManyProducts()
+        public List<Product> CreateManyProducts()
         {
             return CreateProductsList(3);
         }

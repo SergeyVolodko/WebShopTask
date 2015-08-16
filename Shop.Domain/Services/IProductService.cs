@@ -5,7 +5,7 @@ namespace Shop.Domain.Services
 {
     public interface IProductService
     {
-        List<Prdouct> GetAllProducts();
-        List<Prdouct> GetTenProductsFromIndex(int startIndex);
+        List<Product> GetAllProducts();
+        List<Product> GetProductsForPage(int pageNumber);
     }
 }

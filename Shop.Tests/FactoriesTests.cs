@@ -9,7 +9,7 @@ namespace Shop.Tests
     {
         [Theory]
         [ShopAutoData]
-        public void cart_factory_should_create_cart_with_proper_product_inside(
+        public void cart_factory_should_create_cart_containing_proper_product(
             CartFactory sut)
         {
             var product = new ProductDataFactory()

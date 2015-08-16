@@ -1,9 +1,9 @@
 using FluentNHibernate.Mapping;
-using Shop.Domain.NHibernate.Dto;
+using Shop.Domain.Entities;
 
 namespace Shop.Domain.NHibernate.Map
 {
-    public class UserMap: ClassMap<UserDto>
+    public class UserMap: ClassMap<User>
     {
         public UserMap()
         {

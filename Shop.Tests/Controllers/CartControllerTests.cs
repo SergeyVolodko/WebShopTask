@@ -28,7 +28,7 @@ namespace Shop.Tests.Controllers
             var data = new AddToCartData
             {
                 CartId = null,
-                Prdouct = product
+                Product = product
             };
 
             sut.Post(data)

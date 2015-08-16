@@ -64,14 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CartFactory.cs" />
-    <Compile Include="Entities\Prdouct.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\NotAuthorizedUser.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="ICartFactory.cs" />
-    <Compile Include="NHibernate\Dto\ProductDto.cs" />
-    <Compile Include="NHibernate\Dto\CartDto.cs" />
-    <Compile Include="NHibernate\Dto\DtoMapper.cs" />
-    <Compile Include="NHibernate\Dto\UserDto.cs" />
     <Compile Include="NHibernate\Map\ProductMap.cs" />
     <Compile Include="NHibernate\Map\CartMap.cs" />
     <Compile Include="Repositories\ProductNhibRepository.cs" />

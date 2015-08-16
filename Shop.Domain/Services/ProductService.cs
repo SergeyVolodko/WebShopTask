@@ -14,14 +14,15 @@ namespace Shop.Domain.Services
             this.repository = repository;
         }
 
-        public List<Prdouct> GetAllProducts()
+        public List<Product> GetAllProducts()
         {
             return repository.GetAll();
         }
 
-        public List<Prdouct> GetTenProductsFromIndex(int startIndex)
+        public List<Product> GetProductsForPage(int pageNumber)
         {
             var count = repository.GetProductsCount();
+            var startIndex = pageNumber * 10 - 10;
             if (startIndex > count)
             {
                 int lastAvailableIndex = count / 10;

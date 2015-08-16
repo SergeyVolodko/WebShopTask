@@ -5,6 +5,6 @@ namespace Shop.Domain.Services
 {
     public interface ICartService
     {
-        Cart AddProductToCart(Guid? cartId, Prdouct prdouct);
+        Cart AddProductToCart(Guid? cartId, Product product);
     }
 }

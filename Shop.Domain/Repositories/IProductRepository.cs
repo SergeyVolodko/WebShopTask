@@ -6,10 +6,10 @@ namespace Shop.Domain.Repositories
 {
     public interface IProductRepository
     {
-        List<Prdouct> GetAll();
-        List<Prdouct> GetTenProducts(int startIndex);
+        List<Product> GetAll();
+        List<Product> GetTenProducts(int startIndex);
         int GetProductsCount();
-        void Save(List<Prdouct> products);
-        Prdouct Save(Prdouct prdouct);
+        void Save(List<Product> products);
+        Product Save(Product product);
     }
 }

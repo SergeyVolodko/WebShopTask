@@ -1,9 +1,9 @@
 using FluentNHibernate.Mapping;
-using Shop.Domain.NHibernate.Dto;
+using Shop.Domain.Entities;
 
 namespace Shop.Domain.NHibernate.Map
 {
-    public class CartMap: ClassMap<CartDto>
+    public class CartMap: ClassMap<Cart>
     {
         public CartMap()
         {
@@ -11,11 +11,7 @@ namespace Shop.Domain.NHibernate.Map
 
             Id(x => x.Id).GeneratedBy.GuidComb();
 
-            HasManyToMany(x => x.Products)
-               .Table("ProductInCart")
-               .ParentKeyColumn("product_fk")
-               .ChildKeyColumn("cart_fk")
-               .Cascade.SaveUpdate();
+            HasManyToMany(x => x.Products);
         }
     }
 }

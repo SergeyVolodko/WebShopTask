@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.UI;
 using Shop.Domain.Entities;
 using Shop.Domain.Services;
 
@@ -14,16 +15,14 @@ namespace Shop.Site.Controllers
             productService = service;
         }
 
-        public List<Prdouct> Get()
+        public List<Product> Get()
         {
             return productService.GetAllProducts();
         }
 
-        public List<Prdouct> GetPageProducts(int pageNumber)
+        public List<Product> GetPageProducts(int pageNumber)
         {
-            // TODO: isn't it a mixing of responisbilities if use service.getPageProducts ?
-            var startIndex = pageNumber * 10 - 10;
-            return productService.GetTenProductsFromIndex(startIndex);
+            return productService.GetProductsForPage(pageNumber);
         }
     }
 }

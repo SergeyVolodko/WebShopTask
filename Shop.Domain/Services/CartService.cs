@@ -15,18 +15,18 @@ namespace Shop.Domain.Services
             this.repository = repository;
         }
 
-        public Cart AddProductToCart(Guid? cartId, Prdouct prdouct)
+        public Cart AddProductToCart(Guid? cartId, Product product)
         {
             Cart cart = null;
 
             if (cartId.HasValue)
             {
                 cart = repository.GetCartById(cartId.Value);
-                cart.AddProduct(prdouct);
+                cart.AddProduct(product);
             }
             else
             {
-                cart = factory.CreateCart(prdouct);
+                cart = factory.CreateCart(product);
             }
 
             return repository.Save(cart);

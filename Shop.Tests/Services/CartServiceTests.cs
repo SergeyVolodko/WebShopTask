@@ -1,21 +1,29 @@
 ﻿using System;
 using NSubstitute;
-using Ploeh.AutoFixture.Xunit;
 using Shop.Domain;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
 using Shop.Domain.Services;
+using Xunit;
 using Xunit.Extensions;
 
 namespace Shop.Tests.Services
 {
     public class CartServiceTests
     {
-        [Theory]
-        [ShopAutoData]
-        public void add_product_to_empty_cart_invoke_factory_create_cart(
-            [Frozen] ICartFactory factory,
-            CartService sut)
+        private readonly ICartFactory factory;
+        private readonly ICartRepository repository;
+        private readonly CartService sut;
+
+        public CartServiceTests()
+        {
+            factory = Substitute.For<ICartFactory>();
+            repository = Substitute.For<ICartRepository>();
+            sut = new CartService(repository, factory);
+        }
+
+        [Fact]
+        public void add_product_to_empty_cart_invoke_factory_create_cart()
         {
             var product = new ProductDataFactory()
                 .CreateProduct();
@@ -27,12 +35,8 @@ namespace Shop.Tests.Services
                 .CreateCart(product);
         }
         
-        [Theory]
-        [ShopAutoData]
-        public void add_product_to_empty_cart_invoke_repo_save(
-            [Frozen] ICartRepository repo,
-            [Frozen] ICartFactory factory,
-            CartService sut)
+        [Fact]
+        public void add_product_to_empty_cart_invoke_repo_save()
         {
             var product = new ProductDataFactory()
                 .CreateProduct();
@@ -47,66 +51,66 @@ namespace Shop.Tests.Services
             
             sut.AddProductToCart(null, product);
 
-            repo.Received()
-                .Save(cart);
+            repository.Received()
+                      .Save(cart);
         }
 
         [Theory]
         [ShopAutoData]
         public void add_product_to_nonempty_cart_not_invoke_factory_create_cart(
-            [Frozen] ICartFactory factory,
-            [Frozen] ICartRepository repo,
-            CartService sut,
             Guid cartId,
-            Prdouct prdouct)
+            Product product)
         {
             var cart = new CartDataBuilder()
                 .WithId(cartId)
-                .WithProduct(prdouct)
+                .WithProduct(product)
                 .Build();
 
-            repo.GetCartById(cartId)
-                .Returns(cart);
+            repository.GetCartById(cartId)
+                      .Returns(cart);
 
-            sut.AddProductToCart(cartId, Arg.Any<Prdouct>());
+            sut.AddProductToCart(cartId, Arg.Any<Product>());
 
             factory.DidNotReceive()
-                .CreateCart(Arg.Any<Prdouct>());
+                   .CreateCart(Arg.Any<Product>());
         }
 
         [Theory]
         [ShopAutoData]
         public void add_product_to_nonempty_cart_invoke_repo_get_by_id(
-            [Frozen] ICartRepository repo,
-            CartService sut,
-            Prdouct prdouct,
-            Guid cartId)
-        {
-            sut.AddProductToCart(cartId, prdouct);
-
-            repo.Received()
-                .GetCartById(cartId);
-        }
-
-        [Theory]
-        [ShopAutoData]
-        public void add_product_to_existung_cart_invoke_repo_save(
-            [Frozen] ICartRepository repo,
-            CartService sut,
-            Prdouct prdouct,
+            Product product,
             Guid cartId)
         {
             var cart = new CartDataBuilder()
                 .WithId(cartId)
                 .Build();
 
-            repo.GetCartById(cartId)
-                .Returns(cart);
+            repository.GetCartById(cartId)
+                      .Returns(cart);
 
-            sut.AddProductToCart(cartId, prdouct);
+            sut.AddProductToCart(cartId, product);
 
-            repo.Received()
-                .Save(cart);
+            repository.Received()
+                      .GetCartById(cartId);
+        }
+
+        [Theory]
+        [ShopAutoData]
+        public void add_product_to_existung_cart_invoke_repo_save(
+            Product product,
+            Guid cartId)
+        {
+            var cart = new CartDataBuilder()
+                .WithId(cartId)
+                .Build();
+
+            repository.GetCartById(cartId)
+                      .Returns(cart);
+
+            sut.AddProductToCart(cartId, product);
+
+            repository.Received()
+                      .Save(cart);
         }
     }
 }

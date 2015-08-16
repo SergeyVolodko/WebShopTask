@@ -1,7 +1,6 @@
 ﻿using System;
 using NHibernate;
 using Shop.Domain.Entities;
-using Shop.Domain.NHibernate.Dto;
 
 namespace Shop.Domain.Repositories
 {
@@ -16,24 +15,19 @@ namespace Shop.Domain.Repositories
 
         public Cart Save(Cart cart)
         {
-            var dto = (CartDto) cart;
             using (ITransaction transaction = session.BeginTransaction())
             {
-                session.Save(dto);
+                session.Save(cart);
                 transaction.Commit();
             }
-            return dto == null ? null 
-                   : (Cart)dto;
+            return cart;
         }
 
         public Cart GetCartById(Guid cartId)
         {
-            var dto = session.QueryOver<CartDto>()
+            return session.QueryOver<Cart>()
                 .Where(c => c.Id == cartId)
                 .SingleOrDefault();
-
-            return dto == null ? null
-                    : (Cart)dto;
         }
     }
 }

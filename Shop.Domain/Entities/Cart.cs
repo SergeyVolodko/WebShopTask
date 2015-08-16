@@ -1,41 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Shop.Domain.NHibernate.Dto;
 
 namespace Shop.Domain.Entities
 {
     public class Cart
     {
-        public Guid? Id { get; set; }
-        public List<Prdouct> Products { get; set; }
+        public virtual Guid? Id { get; set; }
+        public virtual List<Product> Products { get; set; }
 
         public Cart()
         {
-            this.Products = new List<Prdouct>();
+            this.Products = new List<Product>();
         }
 
-        public virtual void AddProduct(Prdouct prdouct)
+        public virtual void AddProduct(Product product)
         {
-            this.Products.Add(prdouct);
+            product.Carts.Add(this);
+            this.Products.Add(product);
         }
-
-        public static implicit operator CartDto(Cart cart)
-        {
-            var productDtos = cart.Products
-                .Select(product => (ProductDto)product)
-                .ToList();
-
-            var cartDto = new DtoMapper<CartDto>()
-                .MapFrom(cart);
-
-            cartDto.Products = productDtos;
-            foreach (var productDto in productDtos)
-            {
-                productDto.Carts.Add(cartDto);
-            }
-
-            return cartDto;
-        }
+        
     }
 }

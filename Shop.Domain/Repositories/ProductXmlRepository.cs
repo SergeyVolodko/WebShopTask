@@ -14,24 +14,24 @@ namespace Shop.Domain.Repositories
             this.xmlFile = xmlFile;
         }
 
-        public List<Prdouct> GetAll()
+        public List<Product> GetAll()
         {
-            var result = new List<Prdouct>();
+            var result = new List<Product>();
 
             if (File.Exists(xmlFile))
             {
-                var serializer = new XmlSerializer(typeof(List<Prdouct>));
+                var serializer = new XmlSerializer(typeof(List<Product>));
 
                 using (var reader = new FileStream(xmlFile, FileMode.OpenOrCreate))
                 {
-                    result = (List<Prdouct>)serializer.Deserialize(reader);
+                    result = (List<Product>)serializer.Deserialize(reader);
                 }
             }
 
             return result;
         }
 
-        public List<Prdouct> GetTenProducts(int startIndex)
+        public List<Product> GetTenProducts(int startIndex)
         {
             var products = GetAll();
             return products.GetRange(startIndex, 10);
@@ -43,9 +43,9 @@ namespace Shop.Domain.Repositories
             return products.Count;
         }
 
-        public void Save(List<Prdouct> products)
+        public void Save(List<Product> products)
         {
-            var serializer = new XmlSerializer(typeof(List<Prdouct>));
+            var serializer = new XmlSerializer(typeof(List<Product>));
 
             using (var writer = new FileStream(xmlFile, FileMode.Create, FileAccess.Write))
             {
@@ -53,7 +53,7 @@ namespace Shop.Domain.Repositories
             }
         }
 
-        public Prdouct Save(Prdouct prdouct)
+        public Product Save(Product product)
         {
             throw new System.NotImplementedException();
         }

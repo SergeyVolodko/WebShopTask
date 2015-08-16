@@ -9,7 +9,6 @@ E:\Projects\WebShopTask\Shop.Domain\bin\Debug\System.Data.SQLite.dll
 E:\Projects\WebShopTask\Shop.Domain\bin\Debug\Iesi.Collections.xml
 E:\Projects\WebShopTask\Shop.Domain\bin\Debug\NHibernate.xml
 E:\Projects\WebShopTask\Shop.Domain\bin\Debug\System.Data.SQLite.xml
-E:\Projects\WebShopTask\Shop.Domain\obj\Debug\Shop.Domain.csprojResolveAssemblyReference.cache
 E:\Projects\WebShopTask\Shop.Domain\bin\Debug\Community.CsharpSqlite.dll
 E:\Projects\WebShopTask\Shop.Domain\bin\Debug\Community.CsharpSqlite.SQLiteClient.dll
 E:\Projects\WebShopTask\Shop.Domain\bin\Debug\FluentNHibernate.Cfg.Db.CsharpSqlite.dll
