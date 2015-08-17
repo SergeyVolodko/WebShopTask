@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CartFactory.cs" />
+    <Compile Include="DomainConsts.cs" />
     <Compile Include="Entities\CartItem.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\NotAuthorizedUser.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Repositories\UserNHibRepository.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="TotalSummary.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

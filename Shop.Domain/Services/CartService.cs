@@ -46,5 +46,24 @@ namespace Shop.Domain.Services
 
             return cart.Items.Sum(i => i.Product.Price * i.Quantity);
         }
+
+        public TotalSummary GetTotal(Guid cartId)
+        {
+            var cart = cartRepository.GetCartById(cartId);
+            var vatRate = DomainConsts.VATRate;
+
+            var sum = cart.Items.Sum(i => i.Product.Price * i.Quantity);
+
+            var vat = sum*vatRate;
+
+            return new TotalSummary
+            {
+                VATRate = vatRate,
+                VAT = vat,
+                TotalExcludingVAT = sum,
+                TotalIncludingVAT = sum + vat
+            };
+        }
+
     }
 }

@@ -124,6 +124,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\OrderControllerTests.cs" />
     <Compile Include="FactoriesTests.cs" />
     <Compile Include="ProductDataFactory.cs" />
     <Compile Include="Integration\CartRepositoryIntTests.cs" />

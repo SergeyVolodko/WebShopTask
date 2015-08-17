@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using Shop.Domain;
 using Shop.Domain.Entities;
 using Shop.Domain.Services;
 using Shop.Site.Models;
@@ -23,6 +24,11 @@ namespace Shop.Site.Controllers
         public double GetSubtotal(Guid cartId)
         {
             return cartService.GetSubtotal(cartId);
+        }
+
+        public TotalSummary GetTotal(Guid cartId)
+        {
+            return cartService.GetTotal(cartId);
         }
     }
 }

@@ -216,11 +216,23 @@ namespace Shop.Tests.Services
             cartRepository.GetCartById(cartId)
                       .Returns(cart);
 
-            var expected = multipleProduct.Price*2 + product.Price;
+            var expected = multipleProduct.Price * 2 + product.Price;
 
             sut.GetSubtotal(cartId)
                 .Should()
                 .Be(expected);
         }
+
+        [Theory]
+        [ShopAutoData]
+        public void get_total_invokes_get_cart_by_id(
+            Guid cartId)
+        {
+            sut.GetTotal(cartId);
+
+            cartRepository.Received()
+                .GetCartById(cartId);
+        }
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentAssertions;
 using NSubstitute;
+using Shop.Domain;
 using Shop.Domain.Entities;
 using Shop.Domain.Services;
 using Shop.Site.Controllers;
@@ -72,6 +73,17 @@ namespace Shop.Tests.Controllers
 
             service.Received()
                 .GetSubtotal(cartId);
+        }
+        
+        [Theory]
+        [ShopAutoData]
+        public void get_total_invokes_service_get_total(
+            Guid cartId)
+        {
+            sut.GetTotal(cartId);
+
+            service.Received()
+                .GetTotal(cartId);
         }
     }
 }

@@ -7,5 +7,6 @@ namespace Shop.Domain.Services
     {
         Cart AddProductToCart(Guid? cartId, Guid productId);
         double GetSubtotal(Guid cartId);
+        TotalSummary GetTotal(Guid cartId);
     }
 }

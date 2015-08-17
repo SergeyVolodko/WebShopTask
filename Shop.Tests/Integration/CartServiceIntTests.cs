@@ -1,5 +1,7 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using Ninject;
+using Shop.Domain;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
 using Shop.Domain.Services;
@@ -83,6 +85,35 @@ namespace Shop.Tests.Integration
                 .Quantity
                 .Should()
                 .Be(2);
+        }
+
+        [Theory]
+        [ShopAutoData]
+        public void get_total_for_not_empty_cart_returns_correct_summary()
+        {
+            var products = new ProductDataFactory()
+                .CreateProductsListWithFixedPrice(3, 50);
+
+            productRepository.Save(products);
+
+            var sut = kernel.Get<ICartService>();
+
+            var cart = sut.AddProductToCart(null, products[0].Id.Value);
+            foreach (var product in products)
+            {
+                sut.AddProductToCart(cart.Id, product.Id.Value);
+            }
+
+            var expected = new TotalSummary
+            {
+               VATRate = 0.2,
+               VAT = 40,
+               TotalExcludingVAT = 200,
+               TotalIncludingVAT = 240
+            };
+
+            sut.GetTotal(cart.Id.Value)
+                .ShouldBeEquivalentTo(expected);
         }
     }
 }

@@ -14,20 +14,23 @@ namespace Shop.Tests
             fixture = new Fixture();
         }
 
-        public Product CreateProduct()
-        {
-            return
-                fixture.Build<Product>()
-                    .Without(a => a.Id)
-                    .WithAutoProperties()
-                    .Create();
-        }
-
         public List<Product> CreateProductsList(int count)
         {
             fixture.RepeatCount = count;
             var products = fixture.Build<Product>()
                 .Without(a => a.Id)
+                .WithAutoProperties()
+                .CreateMany().ToList();
+
+            return products;
+        }
+        
+        public List<Product> CreateProductsListWithFixedPrice(int count, double price)
+        {
+            fixture.RepeatCount = count;
+            var products = fixture.Build<Product>()
+                .Without(a => a.Id)
+                .With(p => p.Price, price)
                 .WithAutoProperties()
                 .CreateMany().ToList();
 
