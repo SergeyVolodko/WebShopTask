@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using Shop.Domain.Entities;
 using Shop.Domain.Services;
 using Shop.Site.Models;
@@ -17,6 +18,11 @@ namespace Shop.Site.Controllers
         public Cart Post(AddToCartData data)
         {
             return cartService.AddProductToCart(data.CartId, data.ProductId);
+        }
+
+        public double GetSubtotal(Guid cartId)
+        {
+            return cartService.GetSubtotal(cartId);
         }
     }
 }

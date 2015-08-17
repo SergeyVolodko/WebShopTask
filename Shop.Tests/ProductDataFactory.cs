@@ -33,6 +33,16 @@ namespace Shop.Tests
 
             return products;
         }
+        
+        public List<Product> CreateSavedProductsList(int count)
+        {
+            fixture.RepeatCount = count;
+            var products = fixture.Build<Product>()
+                .WithAutoProperties()
+                .CreateMany().ToList();
+
+            return products;
+        }
 
         public List<Product> CreateManyProducts()
         {

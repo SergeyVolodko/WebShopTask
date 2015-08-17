@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Shop.Domain.Entities
 {
@@ -15,7 +16,16 @@ namespace Shop.Domain.Entities
 
         public virtual void AddProduct(Product product)
         {
-            this.Items.Add(new CartItem(product));
+            var existing = this.Items.FirstOrDefault(i => i.Product.Id == product.Id);
+
+            if (existing != null)
+            {
+                existing.Quantity++;
+            }
+            else
+            {
+                this.Items.Add(new CartItem(product));
+            }
         }
         
     }

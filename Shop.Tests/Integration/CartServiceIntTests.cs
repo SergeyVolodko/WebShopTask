@@ -46,6 +46,7 @@ namespace Shop.Tests.Integration
         {
             var products = new ProductDataFactory()
                 .CreateProductsList(2);
+           
             productRepository.Save(products);
 
             var sut = kernel.Get<ICartService>();
@@ -61,6 +62,27 @@ namespace Shop.Tests.Integration
                 .Items
                 .Should()
                 .Contain(item => item.Product.Id == products[1].Id);
+        }
+
+        [Theory]
+        [ShopAutoData]
+        public void add_product_to_cart_twice_should_increase_cart_item_quantity(
+            Product product)
+        {
+            product = productRepository.Save(product);
+
+            var productId = product.Id.Value;
+
+            var sut = kernel.Get<ICartService>();
+
+            var cart = sut.AddProductToCart(null, productId);
+
+            var actual = sut.AddProductToCart(cart.Id, productId);
+
+            actual.Items[0]
+                .Quantity
+                .Should()
+                .Be(2);
         }
     }
 }

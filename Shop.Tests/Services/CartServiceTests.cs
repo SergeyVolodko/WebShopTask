@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
 using NSubstitute;
 using Shop.Domain;
@@ -130,6 +131,7 @@ namespace Shop.Tests.Services
             Product product)
         {
             var productId = product.Id.Value;
+
             productRepository.GetById(productId)
                 .Returns(product);
 
@@ -145,6 +147,80 @@ namespace Shop.Tests.Services
             actual.Items
                 .Should()
                 .Contain(item => item.Product == product);
+        }
+        
+        [Theory]
+        [ShopAutoData]
+        public void get_subtotal_invokes_get_cart_by_id(
+            Guid cartId)
+        {
+            sut.GetSubtotal(cartId);
+
+            cartRepository.Received()
+                .GetCartById(cartId);
+        }
+
+        [Theory]
+        [ShopAutoData]
+        public void get_subtotal_for_empty_cart_returns_0(
+            Guid cartId)
+        {
+            var cart = new CartDataBuilder()
+                .WithId(cartId)
+                .Build();
+
+            cartRepository.GetCartById(cartId)
+                      .Returns(cart);
+
+            sut.GetSubtotal(cartId)
+                .Should()
+                .Be(0);
+        }
+        
+        [Theory]
+        [ShopAutoData]
+        public void get_subtotal_for_not_empty_cart_returns_sum_of_products_prices(
+            Guid cartId)
+        {
+            var products = new ProductDataFactory()
+                .CreateSavedProductsList(3);
+
+            var cart = new CartDataBuilder()
+                .WithId(cartId)
+                .WithProducts(products)
+                .Build();
+
+            cartRepository.GetCartById(cartId)
+                      .Returns(cart);
+
+            var expected = products.Sum(p => p.Price);
+
+            sut.GetSubtotal(cartId)
+                .Should()
+                .Be(expected);
+        }
+
+        [Theory]
+        [ShopAutoData]
+        public void get_subtotal_for_cart_containing_same_products_returns_correct_sum(
+            Guid cartId,
+            Product multipleProduct,
+            Product product)
+        {
+            var cart = new CartDataBuilder()
+                .WithId(cartId)
+                .WithProduct(multipleProduct, 2)
+                .WithProduct(product)
+                .Build();
+
+            cartRepository.GetCartById(cartId)
+                      .Returns(cart);
+
+            var expected = multipleProduct.Price*2 + product.Price;
+
+            sut.GetSubtotal(cartId)
+                .Should()
+                .Be(expected);
         }
     }
 }

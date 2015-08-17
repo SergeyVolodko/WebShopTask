@@ -14,9 +14,28 @@ namespace Shop.Tests
             cart.Items = new List<CartItem>();
         }
 
+        public CartDataBuilder WithProducts(List<Product> products)
+        {
+            foreach (var product in products)
+            {
+                cart.AddProduct(product);
+            }
+            return this;
+        }
+        
         public CartDataBuilder WithProduct(Product product)
         {
             cart.AddProduct(product);
+            return this;
+        }
+        
+        public CartDataBuilder WithProduct(Product product, int quantity)
+        {
+            for (int i = 0; i < quantity; i++)
+            {
+                cart.AddProduct(product);
+            }
+            
             return this;
         }
 

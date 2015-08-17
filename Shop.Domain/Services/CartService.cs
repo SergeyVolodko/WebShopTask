@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
 
@@ -37,6 +38,13 @@ namespace Shop.Domain.Services
             cartRepository.Save(cart);
 
             return cart;
+        }
+
+        public double GetSubtotal(Guid cartId)
+        {
+            var cart = cartRepository.GetCartById(cartId);
+
+            return cart.Items.Sum(i => i.Product.Price * i.Quantity);
         }
     }
 }

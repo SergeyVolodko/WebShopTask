@@ -5,6 +5,7 @@ using Shop.Domain.Entities;
 using Shop.Domain.Services;
 using Shop.Site.Controllers;
 using Shop.Site.Models;
+using Xunit;
 using Xunit.Extensions;
 
 namespace Shop.Tests.Controllers
@@ -60,6 +61,17 @@ namespace Shop.Tests.Controllers
 
             service.Received()
                 .AddProductToCart(cartId, productId);
+        }
+
+        [Theory]
+        [ShopAutoData]
+        public void get_subtotal_invokes_service_get_subtotal(
+            Guid cartId)
+        {
+            sut.GetSubtotal(cartId);
+
+            service.Received()
+                .GetSubtotal(cartId);
         }
     }
 }
