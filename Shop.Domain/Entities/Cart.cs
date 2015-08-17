@@ -6,17 +6,16 @@ namespace Shop.Domain.Entities
     public class Cart
     {
         public virtual Guid? Id { get; set; }
-        public virtual List<Product> Products { get; set; }
+        public virtual IList<CartItem> Items { get; set; }
 
         public Cart()
         {
-            this.Products = new List<Product>();
+            this.Items = new List<CartItem>();
         }
 
         public virtual void AddProduct(Product product)
         {
-            product.Carts.Add(this);
-            this.Products.Add(product);
+            this.Items.Add(new CartItem(product));
         }
         
     }

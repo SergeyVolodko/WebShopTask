@@ -64,12 +64,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CartFactory.cs" />
+    <Compile Include="Entities\CartItem.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\NotAuthorizedUser.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="ICartFactory.cs" />
-    <Compile Include="NHibernate\Map\ProductMap.cs" />
-    <Compile Include="NHibernate\Map\CartMap.cs" />
+    <Compile Include="NHibernate\IdConvention .cs" />
     <Compile Include="Repositories\ProductNhibRepository.cs" />
     <Compile Include="Repositories\ProductXmlRepository.cs" />
     <Compile Include="Repositories\CartNHibRepository.cs" />
@@ -82,7 +82,6 @@
     <Compile Include="Services\ICartService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="NHibernate\NhibernateSessionFactory.cs" />
-    <Compile Include="NHibernate\Map\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Repositories\UserNHibRepository.cs" />

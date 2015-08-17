@@ -1,7 +1,5 @@
 ﻿using FluentAssertions;
 using NSubstitute;
-using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.Xunit;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
 using Shop.Domain.Services;

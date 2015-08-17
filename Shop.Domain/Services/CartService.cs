@@ -7,29 +7,36 @@ namespace Shop.Domain.Services
     public class CartService : ICartService
     {
         private readonly ICartFactory factory;
-        private readonly ICartRepository repository;
+        private readonly ICartRepository cartRepository;
+        private readonly IProductRepository productRepository;
 
-        public CartService(ICartRepository repository, ICartFactory factory)
+        public CartService(ICartRepository cartRepository, IProductRepository productRepository, ICartFactory factory)
         {
             this.factory = factory;
-            this.repository = repository;
+            this.cartRepository = cartRepository;
+            this.productRepository = productRepository;
         }
-
-        public Cart AddProductToCart(Guid? cartId, Product product)
+        
+        public Cart AddProductToCart(Guid? cartId, Guid productId)
         {
             Cart cart = null;
 
+            var product = productRepository.GetById(productId);
+
             if (cartId.HasValue)
             {
-                cart = repository.GetCartById(cartId.Value);
-                cart.AddProduct(product);
+               cart = cartRepository.GetCartById(cartId.Value);
             }
             else
             {
-                cart = factory.CreateCart(product);
+                cart = factory.CreateCart();
             }
 
-            return repository.Save(cart);
+            cart.AddProduct(product);
+            
+            cartRepository.Save(cart);
+
+            return cart;
         }
     }
 }

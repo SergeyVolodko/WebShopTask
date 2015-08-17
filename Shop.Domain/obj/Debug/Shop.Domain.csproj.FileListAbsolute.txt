@@ -16,3 +16,4 @@ E:\Projects\WebShopTask\Shop.Domain\bin\Debug\FluentNHibernate.dll
 E:\Projects\WebShopTask\Shop.Domain\bin\Debug\FluentNHibernate.pdb
 E:\Projects\WebShopTask\Shop.Domain\bin\Debug\FluentNHibernate.xml
 E:\Projects\WebShopTask\Shop.Domain\bin\Debug\FluentNHibernate.Cfg.Db.CsharpSqlite.xml
+E:\Projects\WebShopTask\Shop.Domain\obj\Debug\Shop.Domain.csprojResolveAssemblyReference.cache

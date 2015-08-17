@@ -1,6 +1,8 @@
 ﻿using System;
+using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using FluentNHibernate.Conventions.Helpers;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
@@ -23,7 +25,12 @@ namespace Shop.Domain.NHibernate
 
             var fluentConfiguration = Fluently.Configure()
                                                .Database(SQLiteConfiguration.Standard.ConnectionString(connectionString))
-                                               .Mappings(m => m.FluentMappings.AddFromAssemblyOf<User>())
+                                               .Mappings(m => m.AutoMappings.Add(
+                                                   AutoMap.AssemblyOf<User>()
+                                                   .Where(a => a.Namespace.EndsWith("Entities") && a.Name != "NotAuthorizedUser")
+                                                   .Conventions.Add<IdConvention>()
+                                                   .Conventions.Add(DefaultCascade.All()))
+                                                   )
                                                .ExposeConfiguration(BuidSchema)
                                                .BuildConfiguration();
  

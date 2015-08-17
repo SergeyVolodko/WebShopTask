@@ -5,7 +5,7 @@ using Shop.Domain.Entities;
 
 namespace Shop.Domain.Repositories
 {
-    public class ProductXmlRepository: IProductRepository
+    public class ProductXmlRepository//: IProductRepository
     {
         private readonly string xmlFile;
 

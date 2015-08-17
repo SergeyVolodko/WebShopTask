@@ -11,12 +11,12 @@ namespace Shop.Tests
         public CartDataBuilder()
         {
             cart = new Cart();
-            cart.Products = new List<Product>();
+            cart.Items = new List<CartItem>();
         }
 
         public CartDataBuilder WithProduct(Product product)
         {
-            cart.Products.Add(product);
+            cart.AddProduct(product);
             return this;
         }
 

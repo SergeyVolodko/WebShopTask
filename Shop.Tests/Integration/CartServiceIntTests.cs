@@ -12,13 +12,13 @@ namespace Shop.Tests.Integration
     public class CartServiceIntTests
     {
         private readonly IKernel kernel;
-        private readonly IProductRepository repository;
+        private readonly IProductRepository productRepository;
 
         public CartServiceIntTests()
         {
             kernel = new Global(Consts.TEST_APP_DATA)
                 .GetKernel();
-            repository = kernel.Get<IProductRepository>();
+            productRepository = kernel.Get<IProductRepository>();
         }
 
         [Theory]
@@ -26,40 +26,41 @@ namespace Shop.Tests.Integration
         public void add_product_to_empty_cart_returns_new_cart_containing_product(
             Product product)
         {
-            product = repository.Save(product);
-            
+            product = productRepository.Save(product);
+
             var sut = kernel.Get<ICartService>();
 
-            var actual = sut.AddProductToCart(null, product);
+            var actual = sut.AddProductToCart(null, product.Id.Value);
 
             actual
                 .Should()
                 .NotBeNull();
             actual
-                .Products[0]
-                .ShouldBeEquivalentTo(product);
+                .Items
+                .Should()
+                .Contain(item => item.Product.Id == product.Id);
         }
 
-        // TODO: how to resolve mappings in the right way? Is this test correct?
         [Fact]
         public void add_product_to_existing_cart_returns_cart_containing_product()
         {
             var products = new ProductDataFactory()
                 .CreateProductsList(2);
-            
+            productRepository.Save(products);
+
             var sut = kernel.Get<ICartService>();
 
-            var cart = sut.AddProductToCart(null, products[0]);
+            var cart = sut.AddProductToCart(null, products[0].Id.Value);
 
-            var actual = sut.AddProductToCart(cart.Id, products[1]);
+            var actual = sut.AddProductToCart(cart.Id, products[1].Id.Value);
 
             actual.Id
                 .Should()
                 .Be(cart.Id);
             actual
-                .Products
+                .Items
                 .Should()
-                .Contain(products[1]);
+                .Contain(item => item.Product.Id == products[1].Id);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
 using Shop.Domain.Entities;
@@ -12,6 +13,13 @@ namespace Shop.Domain.Repositories
         public ProductNhibRepository(ISession session)
         {
             this.session = session;
+        }
+
+        public Product GetById(Guid id)
+        {
+            return session.QueryOver<Product>()
+                .Where(p => p.Id.Value == id)
+                .SingleOrDefault();
         }
 
         public List<Product> GetAll()

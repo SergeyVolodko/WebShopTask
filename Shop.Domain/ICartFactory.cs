@@ -4,6 +4,6 @@ namespace Shop.Domain
 {
     public interface ICartFactory
     {
-        Cart CreateCart(Product product);
+        Cart CreateCart();
     }
 }
