@@ -126,12 +126,15 @@
   <ItemGroup>
     <Compile Include="Controllers\OrderControllerTests.cs" />
     <Compile Include="FactoriesTests.cs" />
-    <Compile Include="ProductDataFactory.cs" />
+    <Compile Include="DataCreation\ProductDataFactory.cs" />
     <Compile Include="Integration\CartRepositoryIntTests.cs" />
     <Compile Include="Integration\CartServiceIntTests.cs" />
     <Compile Include="Repositories\CartNhibRepositoryTests.cs" />
+    <Compile Include="Integration\OrderRepositoryIntTests.cs" />
+    <Compile Include="Integration\OrderServiceIntTests.cs" />
+    <Compile Include="Services\OrderServiceTests.cs" />
     <Compile Include="Services\ProductServiceTests.cs" />
-    <Compile Include="CartDataBuilder.cs" />
+    <Compile Include="DataCreation\CartDataBuilder.cs" />
     <Compile Include="Controllers\CartControllerTests.cs" />
     <Compile Include="Integration\Consts.cs" />
     <Compile Include="Controllers\ProductControllerTests.cs" />
@@ -146,6 +149,7 @@
     <Compile Include="Controllers\UserControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserServiceTests.cs" />
+    <Compile Include="DataCreation\UserDataBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

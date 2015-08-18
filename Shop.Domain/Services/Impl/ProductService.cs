@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
 
-namespace Shop.Domain.Services
+namespace Shop.Domain.Services.Impl
 {
     public class ProductService : IProductService
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Shop.Domain.Entities;
 
-namespace Shop.Tests
+namespace Shop.Tests.DataCreation
 {
     public class CartDataBuilder
     {

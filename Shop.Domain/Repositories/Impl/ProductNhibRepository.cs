@@ -4,7 +4,7 @@ using System.Linq;
 using NHibernate;
 using Shop.Domain.Entities;
 
-namespace Shop.Domain.Repositories
+namespace Shop.Domain.Repositories.Impl
 {
     public class ProductNhibRepository: IProductRepository
     {

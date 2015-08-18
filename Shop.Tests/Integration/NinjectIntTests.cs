@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Ninject;
+using Shop.Domain.Factories;
+using Shop.Domain.Factories.Impl;
 using Shop.Domain.Repositories;
-using Shop.Domain.Services;
+using Shop.Domain.Services.Impl;
 using Shop.Site;
 using Xunit.Extensions;
 
@@ -61,7 +63,7 @@ namespace Shop.Tests.Integration
         {
             get
             {
-                return typeof (IUserRepository).Assembly
+                return typeof(OrderFactory).Assembly
                     .GetTypes()
                     .Where(t => t.IsInterface && t.Name.EndsWith("Factory"))
                     .Select(t => new object[] {t});

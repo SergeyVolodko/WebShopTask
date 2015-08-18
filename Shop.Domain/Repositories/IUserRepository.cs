@@ -1,4 +1,5 @@
-﻿using Shop.Domain.Entities;
+﻿using System;
+using Shop.Domain.Entities;
 
 namespace Shop.Domain.Repositories
 {
@@ -7,5 +8,6 @@ namespace Shop.Domain.Repositories
         void CreateUser(User newUser);
         bool UserExists(string login);
         User GetUserByLoginAndPassword(string login, string password);
+        User GetUserById(Guid id);
     }
 }

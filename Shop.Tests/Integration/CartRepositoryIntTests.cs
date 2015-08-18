@@ -4,6 +4,7 @@ using Ninject;
 using NSubstitute;
 using Shop.Domain.Repositories;
 using Shop.Site;
+using Shop.Tests.DataCreation;
 using Xunit;
 
 namespace Shop.Tests.Integration

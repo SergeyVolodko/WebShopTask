@@ -1,14 +1,9 @@
 ﻿using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
+using Shop.Domain.Utils;
 
-namespace Shop.Domain.Services
+namespace Shop.Domain.Services.Impl
 {
-    public enum ServiceStatus
-    {
-        Ok,
-        Conflict
-    }
-
     public class UserService : IUserService
     {
         private readonly IUserRepository repository;

@@ -3,7 +3,8 @@ using NHibernate;
 using NSubstitute;
 using Ploeh.AutoFixture.Xunit;
 using Shop.Domain.Entities;
-using Shop.Domain.Repositories;
+using Shop.Domain.Repositories.Impl;
+using Shop.Tests.DataCreation;
 using Xunit.Extensions;
 
 namespace Shop.Tests.Repositories

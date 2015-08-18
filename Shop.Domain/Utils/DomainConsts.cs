@@ -1,5 +1,5 @@
 ﻿
-namespace Shop.Domain
+namespace Shop.Domain.Utils
 {
     public static class DomainConsts
     {

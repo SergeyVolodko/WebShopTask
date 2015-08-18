@@ -63,31 +63,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CartFactory.cs" />
-    <Compile Include="DomainConsts.cs" />
+    <Compile Include="Factories\Impl\CartFactory.cs" />
+    <Compile Include="Factories\Impl\OrderFactory.cs" />
+    <Compile Include="Factories\IOrderFactory.cs" />
+    <Compile Include="Repositories\Impl\OrderNhibRepository.cs" />
+    <Compile Include="Repositories\IOrderRepository.cs" />
+    <Compile Include="Utils\DomainConsts.cs" />
+    <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\CartItem.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\NotAuthorizedUser.cs" />
     <Compile Include="Entities\Cart.cs" />
-    <Compile Include="ICartFactory.cs" />
+    <Compile Include="Entities\ShopOrder.cs" />
+    <Compile Include="Factories\ICartFactory.cs" />
     <Compile Include="NHibernate\IdConvention .cs" />
-    <Compile Include="Repositories\ProductNhibRepository.cs" />
-    <Compile Include="Repositories\ProductXmlRepository.cs" />
-    <Compile Include="Repositories\CartNHibRepository.cs" />
+    <Compile Include="Utils\OrderData.cs" />
+    <Compile Include="Repositories\Impl\ProductNhibRepository.cs" />
+    <Compile Include="Repositories\Impl\CartNHibRepository.cs" />
     <Compile Include="Repositories\ICartRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IProductRepository.cs" />
-    <Compile Include="Services\ProductService.cs" />
-    <Compile Include="Services\CartService.cs" />
+    <Compile Include="Services\Impl\OrderService.cs" />
+    <Compile Include="Utils\ServiceStatus.cs" />
+    <Compile Include="Services\IOrderService.cs" />
+    <Compile Include="Services\Impl\ProductService.cs" />
+    <Compile Include="Services\Impl\CartService.cs" />
     <Compile Include="Services\IProductService.cs" />
     <Compile Include="Services\ICartService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="NHibernate\NhibernateSessionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Repositories\UserNHibRepository.cs" />
-    <Compile Include="Services\UserService.cs" />
-    <Compile Include="TotalSummary.cs" />
+    <Compile Include="Repositories\Impl\UserNHibRepository.cs" />
+    <Compile Include="Services\Impl\UserService.cs" />
+    <Compile Include="Utils\TotalSummary.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

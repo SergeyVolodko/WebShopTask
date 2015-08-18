@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Shop.Domain.Entities;
+using Shop.Domain.Factories;
 using Shop.Domain.Repositories;
+using Shop.Domain.Utils;
 
-namespace Shop.Domain.Services
+namespace Shop.Domain.Services.Impl
 {
     public class CartService : ICartService
     {

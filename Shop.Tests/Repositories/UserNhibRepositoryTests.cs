@@ -2,7 +2,7 @@
 using NHibernate;
 using NSubstitute;
 using Shop.Domain.Entities;
-using Shop.Domain.Repositories;
+using Shop.Domain.Repositories.Impl;
 using Xunit;
 using Xunit.Extensions;
 

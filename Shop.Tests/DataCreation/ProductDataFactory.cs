@@ -3,7 +3,7 @@ using System.Linq;
 using Ploeh.AutoFixture;
 using Shop.Domain.Entities;
 
-namespace Shop.Tests
+namespace Shop.Tests.DataCreation
 {
     public class ProductDataFactory
     {

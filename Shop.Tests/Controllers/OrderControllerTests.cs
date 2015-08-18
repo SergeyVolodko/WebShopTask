@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NSubstitute;
+using Ploeh.AutoFixture.Xunit;
+using Shop.Domain.Services;
+using Shop.Domain.Utils;
+using Shop.Site.Controllers;
 using Xunit.Extensions;
 
 namespace Shop.Tests.Controllers
@@ -11,9 +11,15 @@ namespace Shop.Tests.Controllers
     {
         [Theory]
         [ShopControllerAutoData]
-        public void post_invokes_service_create_order()
+        public void post_invokes_service_create_order(
+            [Frozen] IOrderService service,
+            OrderController sut,
+            OrderData data)
         {
+            sut.Post(data);
 
+            service.Received()
+                .CreateOrder(data);
         }
     }
 }

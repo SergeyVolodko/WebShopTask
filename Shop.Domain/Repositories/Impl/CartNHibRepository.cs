@@ -2,7 +2,7 @@
 using NHibernate;
 using Shop.Domain.Entities;
 
-namespace Shop.Domain.Repositories
+namespace Shop.Domain.Repositories.Impl
 {
     public class CartNHibRepository: ICartRepository
     {

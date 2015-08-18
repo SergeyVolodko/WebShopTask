@@ -3,7 +3,8 @@ using FluentAssertions;
 using NSubstitute;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
-using Shop.Domain.Services;
+using Shop.Domain.Services.Impl;
+using Shop.Tests.DataCreation;
 using Xunit;
 using Xunit.Extensions;
 

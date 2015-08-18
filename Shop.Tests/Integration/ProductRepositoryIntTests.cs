@@ -2,6 +2,7 @@
 using Ninject;
 using Shop.Domain.Repositories;
 using Shop.Site;
+using Shop.Tests.DataCreation;
 using Xunit;
 using Xunit.Extensions;
 

@@ -1,7 +1,8 @@
-﻿using NHibernate;
+﻿using System;
+using NHibernate;
 using Shop.Domain.Entities;
 
-namespace Shop.Domain.Repositories
+namespace Shop.Domain.Repositories.Impl
 {
     public class UserNHibRepository: IUserRepository
     {
@@ -34,6 +35,13 @@ namespace Shop.Domain.Repositories
             return session.QueryOver<User>()
                     .Where(u => u.Login == login
                              && u.Password == password)
+                    .SingleOrDefault();
+        }
+
+        public User GetUserById(Guid id)
+        {
+            return session.QueryOver<User>()
+                    .Where(u => u.Id == id)
                     .SingleOrDefault();
         }
     }

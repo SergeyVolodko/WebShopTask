@@ -3,6 +3,8 @@ using NSubstitute;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
 using Shop.Domain.Services;
+using Shop.Domain.Services.Impl;
+using Shop.Domain.Utils;
 using Xunit.Extensions;
 
 namespace Shop.Tests.Services

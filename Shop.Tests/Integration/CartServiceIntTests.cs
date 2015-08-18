@@ -1,11 +1,11 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Ninject;
-using Shop.Domain;
 using Shop.Domain.Entities;
 using Shop.Domain.Repositories;
 using Shop.Domain.Services;
+using Shop.Domain.Utils;
 using Shop.Site;
+using Shop.Tests.DataCreation;
 using Xunit;
 using Xunit.Extensions;
 

@@ -1,6 +1,6 @@
 ﻿using Shop.Domain.Entities;
 
-namespace Shop.Domain
+namespace Shop.Domain.Factories.Impl
 {
     public class CartFactory: ICartFactory
     {

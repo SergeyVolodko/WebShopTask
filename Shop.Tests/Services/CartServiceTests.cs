@@ -4,8 +4,11 @@ using FluentAssertions;
 using NSubstitute;
 using Shop.Domain;
 using Shop.Domain.Entities;
+using Shop.Domain.Factories;
 using Shop.Domain.Repositories;
 using Shop.Domain.Services;
+using Shop.Domain.Services.Impl;
+using Shop.Tests.DataCreation;
 using Xunit.Extensions;
 
 namespace Shop.Tests.Services

@@ -9,7 +9,10 @@ using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Web.Common;
 using Shop.Domain;
+using Shop.Domain.Factories;
+using Shop.Domain.Factories.Impl;
 using Shop.Domain.Repositories;
+using Shop.Domain.Repositories.Impl;
 using Shop.Domain.Services;
 using Shop.Site.App_Start;
 using Shop.Site.Controllers;
@@ -56,6 +59,7 @@ namespace Shop.Site
             BindRepositories(kernel);
 
             kernel.Bind<ICartFactory>().To<CartFactory>();
+            kernel.Bind<IOrderFactory>().To<OrderFactory>();
 
             BindAllServices(kernel);
 
@@ -70,6 +74,7 @@ namespace Shop.Site
             kernel.Bind<IUserRepository>().To<UserNHibRepository>();
             kernel.Bind<ICartRepository>().To<CartNHibRepository>();
             kernel.Bind<IProductRepository>().To<ProductNhibRepository>();
+            kernel.Bind<IOrderRepository>().To<OrderNhibRepository>();
             //kernel.Bind<IProductRepository>().To<ProductXmlRepository>()
             //    .WithConstructorArgument("xmlFile", articlesXmlPath);
         }

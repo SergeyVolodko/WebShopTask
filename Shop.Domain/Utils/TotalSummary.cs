@@ -1,4 +1,4 @@
-﻿namespace Shop.Domain
+﻿namespace Shop.Domain.Utils
 {
     public class TotalSummary
     {

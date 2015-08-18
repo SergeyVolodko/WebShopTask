@@ -6,6 +6,7 @@ using Shop.Domain.Entities;
 using Shop.Domain.Services;
 using Shop.Site.Controllers;
 using Shop.Site.Models;
+using Shop.Tests.DataCreation;
 using Xunit;
 using Xunit.Extensions;
 

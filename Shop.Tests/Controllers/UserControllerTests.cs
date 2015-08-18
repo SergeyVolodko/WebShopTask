@@ -4,6 +4,7 @@ using NSubstitute;
 using Ploeh.AutoFixture.Xunit;
 using Shop.Domain.Entities;
 using Shop.Domain.Services;
+using Shop.Domain.Utils;
 using Shop.Site.Controllers;
 using Xunit.Extensions;
 

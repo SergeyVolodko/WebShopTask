@@ -3,6 +3,7 @@ using NSubstitute;
 using Ploeh.AutoFixture.Xunit;
 using Shop.Domain.Services;
 using Shop.Site.Controllers;
+using Shop.Tests.DataCreation;
 using Xunit;
 using Xunit.Extensions;
 
